@@ -62,7 +62,6 @@ func _physics_process(delta: float) -> void:
 	
 	##########   END JUMPING     ############
 	
-	
 	#resulting velocity gets stored (will be 0 when hits floor, and won't accumulate gravity)
 	velocity = move_and_slide(velocity, Vector2.UP) 
 	
