@@ -32,7 +32,6 @@ func _physics_process(delta: float) -> void:
 	
 	var input_vector : Vector2 = Vector2.ZERO
 	input_vector = get_player_input_direction() #get player input for the frame
-	move_state(input_vector)
 	
 	match state:
 		states.MOVE: 
@@ -85,7 +84,9 @@ func move_state(input_vector):
 		if Input.is_action_just_pressed("jump") and double_jump > 0:
 			velocity.y = moveData.JUMP_FORCE
 			double_jump -= 1
-			if debug: print ("I am double jumping rn")
+			if debug: 
+				print ("I am double jumping rn")
+				print ("is on floor: " + str(is_on_floor()))
 		
 		#BUFFERED JUMP LOGIC
 		#player doesn't need to be super precise in order to jump immediately after landing

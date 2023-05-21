@@ -2,7 +2,7 @@ extends Resource
 class_name PlayerMovementData
 
 #force of how much fallspeed accumulates on player per frame
-export(int) var GRAVITY = 4
+export(int) var GRAVITY = 8
 #additional force to make player fall once jump is released
 export(int) var ADDITIONAL_FALL_GRAVITY = 0
 #how strong the player's jump will be (negative values are "up")
@@ -16,7 +16,7 @@ export(int) var ACCELERATION = 200
 #the rate at which player speed decays once movement is let go
 export(int) var DEACCELERATION = 200
 #maximum speed the player can move horizontally
-export(int) var MAX_HORIZONTAL_SPEED = 75
+export(int) var MAX_HORIZONTAL_SPEED = 100
 #maximum speed the player can fall
 export(int) var MAX_FALL_SPEED = 300
 #total number of additional jumps the player has
