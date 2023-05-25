@@ -64,7 +64,6 @@ tracks/0/keys = {
 [node name="PatrollingEnemy" type="Path2D"]
 curve = SubResource( 9 )
 script = ExtResource( 3 )
-speed = 1
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotate = false

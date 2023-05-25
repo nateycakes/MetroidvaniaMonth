@@ -7,7 +7,7 @@ enum ANIMATION_TYPE {
 }
 
 export(ANIMATION_TYPE) var animation_type setget set_animation_type
-export(float) var speed = 1 setget set_speed
+export(float) var speed = 1.0 setget set_speed
 
 onready var animationPlayer = $AnimationPlayer
 

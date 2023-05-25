@@ -14,11 +14,11 @@ texture = ExtResource( 1 )
 hframes = 2
 
 [node name="CollectibleHitbox" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleHitbox"]
 position = Vector2( 0, 2.38419e-07 )
 rotation = 0.785398
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
 [connection signal="body_entered" from="CollectibleHitbox" to="." method="_on_CollectibleHitbox_body_entered"]

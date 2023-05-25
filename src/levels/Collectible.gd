@@ -8,10 +8,14 @@ enum COLLECTIBLE_TYPE {
 	LOGBOOK
 }
 
-export(COLLECTIBLE_TYPE) var collectible_type setget set_collectible_type
+export(COLLECTIBLE_TYPE) var collectible_type = COLLECTIBLE_TYPE.DOUBLEJUMP setget set_collectible_type
 onready var hitbox = $CollectibleHitbox
+#onready var animationPlayer = $AnimationPlayer
 
 
+func _ready() -> void:
+	pass
+	#animationPlayer.play("Idle")
 
 
 func increase_double_jump_count(player: Player):
@@ -19,6 +23,16 @@ func increase_double_jump_count(player: Player):
 
 func set_collectible_type(value):
 	collectible_type = value
+
+
+func destroy_self():
+	print("collectible collected")
+	queue_free()
+
+
+
+
+# --------- SIGNALS -----------------
 
 func _on_CollectibleHitbox_body_entered(body: Node) -> void:
 	if body is Player:
@@ -29,4 +43,4 @@ func _on_CollectibleHitbox_body_entered(body: Node) -> void:
 				pass
 			COLLECTIBLE_TYPE.LOGBOOK:
 				pass
-		queue_free()
+		destroy_self()
