@@ -9,7 +9,7 @@ enum states {
 	KNOCKBACK
 }
 onready var velocity : Vector2 = Vector2.ZERO
-onready var playerSprite: = $Sprite
+onready var playerSprite: = $AnimatedSprite
 onready var jumpBufferTimer: = $JumpBufferTimer
 onready var coyoteTimer: = $CoyoteTimer
 
@@ -17,7 +17,7 @@ var state = states.MOVE
 var double_jump = 1
 var buffered_jump = false
 var coyote_time_active = false
-var debug = true
+var debug = false
 
 
 ######################   END HEADER SECTION ####################################
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 	match state:
 		states.MOVE: 
-			move_state(input_vector)
+			move_state(input_vector, delta)
 	
 	pass #END _physics_process()
 
@@ -44,75 +44,65 @@ func _physics_process(delta: float) -> void:
 ##########################  CUSTOM  FUNCTIONS  #################################
 
 
-func move_state(input_vector):
+func move_state(input_vector, delta):
 	
 	#state transitions will go here
 	
 	
 	#end state transitions 
 	
-	apply_gravity()
+	apply_gravity(delta)
 	
 	######     HORIZONTAL MOVEMENT   ##############
-	if (input_vector.x == 0): #player is no longer pushing direction, apply friction
-		apply_friction()
-	else:
-		apply_acceleration(input_vector.x) #player is moving
+	# is player no longer pushing direction? apply friction
+	if not player_inputting_move(input_vector): 
+		apply_friction(delta)
+		playerSprite.animation = "Idle"
+		
+	else: #player is inputting move
+		apply_acceleration(input_vector.x, delta) 
+		playerSprite.animation = "Run"
+		#player sprite-flip logic. Default: facing right
+		orient_sprite_to_movement(input_vector)
+	
 	######    END HORIZONTAL MOVEMENT  ############
 	
-	
-	
 	######      JUMPING  LOGIC    #########
-	
-	if is_on_floor():
-		#Reset the double jump when the player lands
+	if is_on_floor(): #any logic for when the player lands goes here
 		reset_double_jump()
+	else: #logic for if the player is still in the air at the start
+		playerSprite.animation = "Jump" #keep them in the jump animation while they're in air falling (this could be "falling animation" if we make one)
 	
 	if player_can_jump(): #player is on the ground and has coyote time
-		
-		handle_jump_input() #has the player submitted a jump? (pushed the button)
+		handle_input_jump() #has the player submitted a jump? (pushed the button)
 		
 	else: #player is **NOT** on the floor and has no coyote time
+		control_jump_height() #let go of jump or min jump
+		handle_input_double_jump() #jumping again?
+		handle_buffered_input_jump() #recognize player wants to jump
+		additional_gravity(delta) #gamefeel / extra character weight
 		
-		#CONTROLLED JUMP HEIGHT LOGIC
-		#player is currently jumping but can only stop their jump once they've crossed the Minimum Jump Threshold
-		if Input.is_action_just_released("jump") and velocity.y < moveData.MINIMUM_JUMP_THRESHOLD:
-			velocity.y = moveData.MINIMUM_JUMP_THRESHOLD
-		
-		#DOUBLE JUMP LOGIC
-		#player can jump again in the air, total number of additional jumps controlled in PlayerMovementData
-		if Input.is_action_just_pressed("jump") and double_jump > 0:
-			velocity.y = moveData.JUMP_FORCE
-			double_jump -= 1
-			if debug: 
-				print ("I am double jumping rn")
-				print ("is on floor: " + str(is_on_floor()))
-		
-		#BUFFERED JUMP LOGIC
-		#player doesn't need to be super precise in order to jump immediately after landing
-		if Input.is_action_just_pressed("jump"):
-			buffered_jump = true
-			jumpBufferTimer.start()
-		
-		#ADDITIONAL GRAVITY
-		#player has stopped ascending, add additional gravity now (to help with "game feel")
-		if velocity.y > 0: 
-			velocity.y += moveData.ADDITIONAL_FALL_GRAVITY
-			
 		#END player is **NOT** on the floor and has no coyote time section------
 	
 	
-	
+	###Jump state booleans to make testing more readable
 	var was_on_floor = is_on_floor()
+	var was_in_air = not is_on_floor()
 	
 	#resulting velocity gets stored (will be 0 when hits floor, and won't accumulate gravity)
 	velocity = move_and_slide(velocity, Vector2.UP) 
 	#we know where the player is headed after move_and slide
 	
-	#COYOTE TIME CHECK
+	###Jump state booleans post-move_and_slide()
 	#player is NOT on the floor but they WERE before move_and_slide, therefore, they just left
 	var just_left_ground = not is_on_floor() and was_on_floor
+	#player is now on floor but was previously in the air, therefore they just landed
+	var just_landed = is_on_floor() and was_in_air
 	
+	if just_landed:
+		playerSprite.animation = "Run"
+		playerSprite.frame = 1
+	#COYOTE TIME CHECK
 	#did the player just leave AND are they falling downward?
 	if just_left_ground and velocity.y >= 0:
 		coyote_time_active = true
@@ -131,36 +121,87 @@ func get_player_input_direction() -> Vector2: #is player moving left or right?
 	#END get_player_input_direction()
 
 
-func apply_gravity():
-	velocity.y += moveData.GRAVITY
+func apply_gravity(delta):
+	velocity.y += moveData.GRAVITY * delta #changing over time, need to accomodate for time
 	
 	#Limit Falling Speed to defined MAX_FALL_SPEED 
 	velocity.y = min(velocity.y, moveData.MAX_FALL_SPEED)
 	pass #END apply_gravity()
 
 
-func apply_friction(): #slow the player down
-	velocity.x = move_toward(velocity.x, 0, moveData.DEACCELERATION) #move toward is sign agnostic
+func apply_friction(delta): #slow the player down
+	velocity.x = move_toward(velocity.x, 0, moveData.DEACCELERATION * delta) #move toward is sign agnostic
 	pass #END apply_friction()
 
 
-func apply_acceleration(amount): #speed the player up by moveData.ACCELERATION
-	velocity.x = move_toward(velocity.x, moveData.MAX_HORIZONTAL_SPEED * amount, moveData.ACCELERATION) #move toward is sign agnostic
+func apply_acceleration(amount, delta): #speed the player up by moveData.ACCELERATION
+	velocity.x = move_toward(velocity.x, moveData.MAX_HORIZONTAL_SPEED * amount, moveData.ACCELERATION * delta) #move toward is sign agnostic
 	pass #END apply_acceleration()
 
 
-func handle_jump_input():
+func handle_input_jump():
 	#did the player just hit jump or have they jumped in the grace threshold?
 	if Input.is_action_just_pressed("jump") or buffered_jump:
 			velocity.y = moveData.JUMP_FORCE
 			buffered_jump = false
+			
 
+
+func player_inputting_move(input_vector):
+	return input_vector.x != 0
+
+func orient_sprite_to_movement(input_vector):
+	#player sprite-flip logic. Default: facing right
+		if input_vector.x > 0 : #facing right
+			playerSprite.flip_h = false
+		else: #facing left
+			playerSprite.flip_h = true
 
 func reset_double_jump():
 	double_jump = moveData.DOUBLE_JUMP_COUNT
 
 func player_can_jump(): #can the player currently jump?
 	return is_on_floor() or coyote_time_active
+
+
+func control_jump_height():
+	#CONTROLLED JUMP HEIGHT LOGIC
+	#player is currently jumping but can only stop their jump once they've crossed the Minimum Jump Threshold
+	if Input.is_action_just_released("jump") and velocity.y < moveData.MINIMUM_JUMP_THRESHOLD:
+		velocity.y = moveData.MINIMUM_JUMP_THRESHOLD
+
+
+func handle_input_double_jump():
+	#DOUBLE JUMP LOGIC
+	#player can jump again in the air, total number of additional jumps controlled in PlayerMovementData
+	if Input.is_action_just_pressed("jump") and double_jump > 0:
+		velocity.y = moveData.JUMP_FORCE
+		double_jump -= 1
+		if debug: 
+			print ("I am double jumping rn")
+			print ("is on floor: " + str(is_on_floor()))
+
+
+func handle_buffered_input_jump():
+	#BUFFERED JUMP LOGIC
+	#player doesn't need to be super precise in order to jump immediately after landing
+	if Input.is_action_just_pressed("jump"):
+		buffered_jump = true
+		jumpBufferTimer.start()
+
+
+func additional_gravity(delta):
+	#ADDITIONAL GRAVITY
+	#player has stopped ascending, add additional gravity now (to help with "game feel")
+	if velocity.y > 0: 
+		velocity.y += moveData.ADDITIONAL_FALL_GRAVITY * delta
+
+
+
+
+
+
+
 
 
 

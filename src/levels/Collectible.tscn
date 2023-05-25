@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/levelAssets/pickup.png" type="Texture" id=1]
+[ext_resource path="res://src/levels/Collectible.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.65686, 5.65686 )
+
+[node name="Collectible" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollectibleHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleHitbox"]
+position = Vector2( 0, 2.38419e-07 )
+rotation = 0.785398
+scale = Vector2( 1, 1 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="CollectibleHitbox" to="." method="_on_CollectibleHitbox_body_entered"]

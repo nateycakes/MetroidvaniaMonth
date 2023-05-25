@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Collectible",
+"language": "GDScript",
+"path": "res://src/levels/Collectible.gd"
+}, {
+"base": "Area2D",
+"class": "Hitbox",
+"language": "GDScript",
+"path": "res://src/actors/Hitbox.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -20,6 +30,8 @@ _global_script_classes=[ {
 "path": "res://src/actors/PlayerMovementData.gd"
 } ]
 _global_script_class_icons={
+"Collectible": "",
+"Hitbox": "",
 "Player": "",
 "PlayerMovementData": ""
 }
@@ -83,11 +95,10 @@ jump={
 
 [layer_names]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="enemy"
-2d_physics/layer_3="world"
-2d_physics/layer_4="doodad"
-2d_physics/layer_5="pickup"
+2d_physics/layer_1="characters"
+2d_physics/layer_2="world"
+2d_physics/layer_3="doodad"
+2d_physics/layer_4="pickup"
 
 [physics]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_tileMap.png-997e61007907d1715eabbe468a686afb.stex"
+path="res://.import/enemy.png-bee7571d1ddb7e0fd5e7bd69a7a0dc0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/floor_tileMap.png"
-dest_files=[ "res://.import/floor_tileMap.png-997e61007907d1715eabbe468a686afb.stex" ]
+source_file="res://assets/actorAssets/enemy.png"
+dest_files=[ "res://.import/enemy.png-bee7571d1ddb7e0fd5e7bd69a7a0dc0f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
