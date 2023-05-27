@@ -22,6 +22,10 @@ func set_speed(value):
 	if targetAnimationPlayer:
 		targetAnimationPlayer.playback_speed = speed
 
+func reached_endpoint():
+	#do cool stuff
+	pass
+
 
 func set_animation_type(newAnimation):
 	animation_type = newAnimation

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/floor_tileMap.png-8762a768d82509b3926166eed9efcb1d.stex"
+path="res://.import/floor_basic_autotile.png-8bebb1286580d97d1ae2e68260d9f95f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levelAssets/floor_tileMap.png"
-dest_files=[ "res://.import/floor_tileMap.png-8762a768d82509b3926166eed9efcb1d.stex" ]
+source_file="res://assets/levelAssets/floor_basic_autotile.png"
+dest_files=[ "res://.import/floor_basic_autotile.png-8bebb1286580d97d1ae2e68260d9f95f.stex" ]
 
 [params]
 

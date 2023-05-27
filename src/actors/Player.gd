@@ -37,6 +37,9 @@ func _physics_process(delta: float) -> void:
 		states.MOVE: 
 			move_state(input_vector, delta)
 	
+	if is_meowing(): #the most important function in the entire game
+		handle_meowing()
+	
 	pass #END _physics_process()
 
 
@@ -102,6 +105,7 @@ func move_state(input_vector, delta):
 	if just_landed:
 		playerSprite.animation = "Run"
 		playerSprite.frame = 1
+		SoundPlayer.play_sound(SoundPlayer.library.CAT_LAND)
 	#COYOTE TIME CHECK
 	#did the player just leave AND are they falling downward?
 	if just_left_ground and velocity.y >= 0:
@@ -139,14 +143,6 @@ func apply_acceleration(amount, delta): #speed the player up by moveData.ACCELER
 	pass #END apply_acceleration()
 
 
-func handle_input_jump():
-	#did the player just hit jump or have they jumped in the grace threshold?
-	if Input.is_action_just_pressed("jump") or buffered_jump:
-			velocity.y = moveData.JUMP_FORCE
-			buffered_jump = false
-			
-
-
 func player_inputting_move(input_vector):
 	return input_vector.x != 0
 
@@ -164,6 +160,16 @@ func player_can_jump(): #can the player currently jump?
 	return is_on_floor() or coyote_time_active
 
 
+func handle_input_jump():
+	#did the player just hit jump or have they jumped in the grace threshold?
+	if Input.is_action_just_pressed("jump") or buffered_jump:
+			velocity.y = moveData.JUMP_FORCE
+			buffered_jump = false
+			SoundPlayer.play_sound(SoundPlayer.library.CAT_JUMP)
+			
+			
+
+
 func control_jump_height():
 	#CONTROLLED JUMP HEIGHT LOGIC
 	#player is currently jumping but can only stop their jump once they've crossed the Minimum Jump Threshold
@@ -177,6 +183,7 @@ func handle_input_double_jump():
 	if Input.is_action_just_pressed("jump") and double_jump > 0:
 		velocity.y = moveData.JUMP_FORCE
 		double_jump -= 1
+		SoundPlayer.play_sound(SoundPlayer.library.CAT_DOUBLEJUMP)
 		if debug: 
 			print ("I am double jumping rn")
 			print ("is on floor: " + str(is_on_floor()))
@@ -197,13 +204,21 @@ func additional_gravity(delta):
 		velocity.y += moveData.ADDITIONAL_FALL_GRAVITY * delta
 
 
+func player_die():
+	if debug:
+		print("player dead")
 
+func take_damage():
+	SoundPlayer.play_sound(SoundPlayer.library.CAT_HURT)
+	if debug:
+		print("player was damaged")
+	
 
+func is_meowing() -> bool:
+	return Input.is_action_just_pressed("meow")
 
-
-
-
-
+func handle_meowing():
+	SoundPlayer.play_sound(SoundPlayer.library.CAT_MEOW)
 
 
 

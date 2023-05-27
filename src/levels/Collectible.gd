@@ -25,8 +25,9 @@ func set_collectible_type(value):
 	collectible_type = value
 
 
-func destroy_self():
+func get_collected(sound):
 	print("collectible collected")
+	SoundPlayer.play_sound(sound)
 	queue_free()
 
 
@@ -36,11 +37,13 @@ func destroy_self():
 
 func _on_CollectibleHitbox_body_entered(body: Node) -> void:
 	if body is Player:
+		var sfx : Resource
 		match collectible_type:
 			COLLECTIBLE_TYPE.DOUBLEJUMP:
 				increase_double_jump_count(body)
+				sfx = SoundPlayer.library.PICKUP_POWERUP
 			COLLECTIBLE_TYPE.HEALTH:
-				pass
+				sfx = SoundPlayer.library.PICKUP_HEALTH
 			COLLECTIBLE_TYPE.LOGBOOK:
-				pass
-		destroy_self()
+				sfx = SoundPlayer.library.PICKUP_DISC
+		get_collected(sfx)
