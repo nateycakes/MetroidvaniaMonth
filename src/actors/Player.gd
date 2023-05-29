@@ -3,21 +3,26 @@ class_name Player
 
 export(Resource) var moveData = preload("res://src/actors/DefaultPlayerMovementData.tres") as PlayerMovementData
 
+export(int, "OFF", "ON") var debug
+
 enum states {
 	MOVE,
 	ATTACK,
 	KNOCKBACK
 }
 onready var velocity : Vector2 = Vector2.ZERO
-onready var playerSprite: = $AnimatedSprite
-onready var jumpBufferTimer: = $JumpBufferTimer
-onready var coyoteTimer: = $CoyoteTimer
+onready var playerSprite: AnimatedSprite = $AnimatedSprite
+onready var jumpBufferTimer: Timer = $JumpBufferTimer
+onready var coyoteTimer: Timer = $CoyoteTimer
+onready var remoteTransform2d: RemoteTransform2D = $RemoteTransform2D
+
 
 var state = states.MOVE
 var double_jump = 1
 var buffered_jump = false
 var coyote_time_active = false
-var debug = false
+var is_exiting = false #is the player leaving a room?
+
 
 
 ######################   END HEADER SECTION ####################################
@@ -207,9 +212,14 @@ func additional_gravity(delta):
 func player_die():
 	if debug:
 		print("player dead")
+	
+	Events.emit_signal("player_died")
+	queue_free() #remove this instance of the player
+	
 
 func take_damage():
 	SoundPlayer.play_sound(SoundPlayer.library.CAT_HURT)
+	player_die()
 	if debug:
 		print("player was damaged")
 	
@@ -221,6 +231,9 @@ func handle_meowing():
 	SoundPlayer.play_sound(SoundPlayer.library.CAT_MEOW)
 
 
+func connect_camera(camera):
+	var camera_path = camera.get_path()
+	remoteTransform2d.remote_path = camera_path
 
 
 

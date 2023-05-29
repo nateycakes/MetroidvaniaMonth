@@ -2,7 +2,7 @@ extends Resource
 class_name PlayerMovementData
 
 #force of how much fallspeed accumulates on player per frame
-export(int) var GRAVITY = 480
+export(int) var GRAVITY = 400
 #additional force to make player fall once jump is released
 export(int) var ADDITIONAL_FALL_GRAVITY = 0
 #how strong the player's jump will be (negative values are "up")
