@@ -47,7 +47,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 7 )
+extents = Vector2( 6, 6.5 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
@@ -61,7 +61,7 @@ animation = "Jump"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -7 )
+position = Vector2( 0, -6.5 )
 shape = SubResource( 1 )
 
 [node name="JumpBufferTimer" type="Timer" parent="."]

@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
 
-[node name="PlayerSpawnZone" type="Area2D"]
+[node name="PlayerSpawnZone" type="Area2D" groups=["Spawn_Zones"]]
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

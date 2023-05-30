@@ -10,8 +10,11 @@ export(String,
 	"EXIT_LEFT",
 	"EXIT_RIGHT",
 	"EXIT_UP",
-	"EXIT_DOWN"
-) var transition_type
+	"EXIT_DOWN",
+	"DEFAULT_IN",
+	"DEFAULT_OUT",
+	"NONE"
+) var transition_type = "NONE"
 
 
 func _on_RoomTransitionZone_body_entered(body: Node) -> void:

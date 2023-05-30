@@ -212,7 +212,6 @@ func additional_gravity(delta):
 func player_die():
 	if debug:
 		print("player dead")
-	
 	Events.emit_signal("player_died")
 	queue_free() #remove this instance of the player
 	
