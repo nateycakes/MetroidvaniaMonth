@@ -11,10 +11,11 @@ enum states {
 	KNOCKBACK
 }
 onready var velocity : Vector2 = Vector2.ZERO
-onready var playerSprite: AnimatedSprite = $AnimatedSprite
+onready var playerSprite: Sprite = $Sprite
 onready var jumpBufferTimer: Timer = $JumpBufferTimer
 onready var coyoteTimer: Timer = $CoyoteTimer
 onready var remoteTransform2d: RemoteTransform2D = $RemoteTransform2D
+onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 
 var state = states.MOVE
@@ -65,11 +66,11 @@ func move_state(input_vector, delta):
 	# is player no longer pushing direction? apply friction
 	if not player_inputting_move(input_vector): 
 		apply_friction(delta)
-		playerSprite.animation = "Idle"
+		animationPlayer.play("Idle")
 		
 	else: #player is inputting move
 		apply_acceleration(input_vector.x, delta) 
-		playerSprite.animation = "Run"
+		animationPlayer.play("Move")
 		#player sprite-flip logic. Default: facing right
 		orient_sprite_to_movement(input_vector)
 	
@@ -79,7 +80,8 @@ func move_state(input_vector, delta):
 	if is_on_floor(): #any logic for when the player lands goes here
 		reset_double_jump()
 	else: #logic for if the player is still in the air at the start
-		playerSprite.animation = "Jump" #keep them in the jump animation while they're in air falling (this could be "falling animation" if we make one)
+		#keep them in the jump animation while they're in air falling (this could be "falling animation" if we make one)
+		animationPlayer.play("Jump")
 	
 	if player_can_jump(): #player is on the ground and has coyote time
 		handle_input_jump() #has the player submitted a jump? (pushed the button)
@@ -108,8 +110,7 @@ func move_state(input_vector, delta):
 	var just_landed = is_on_floor() and was_in_air
 	
 	if just_landed:
-		playerSprite.animation = "Run"
-		playerSprite.frame = 1
+		animationPlayer.play("Move")
 		SoundPlayer.play_sound(SoundPlayer.library.CAT_LAND)
 	#COYOTE TIME CHECK
 	#did the player just leave AND are they falling downward?
@@ -155,6 +156,7 @@ func orient_sprite_to_movement(input_vector):
 	#player sprite-flip logic. Default: facing right
 		if input_vector.x > 0 : #facing right
 			playerSprite.flip_h = false
+			
 		else: #facing left
 			playerSprite.flip_h = true
 
@@ -171,8 +173,8 @@ func handle_input_jump():
 			velocity.y = moveData.JUMP_FORCE
 			buffered_jump = false
 			SoundPlayer.play_sound(SoundPlayer.library.CAT_JUMP)
-			
-			
+		
+		
 
 
 func control_jump_height():
@@ -186,7 +188,7 @@ func handle_input_double_jump():
 	#DOUBLE JUMP LOGIC
 	#player can jump again in the air, total number of additional jumps controlled in PlayerMovementData
 	if Input.is_action_just_pressed("jump") and double_jump > 0:
-		velocity.y = moveData.JUMP_FORCE
+		velocity.y = moveData.DOUBLE_JUMP_FORCE
 		double_jump -= 1
 		SoundPlayer.play_sound(SoundPlayer.library.CAT_DOUBLEJUMP)
 		if debug: 
@@ -218,7 +220,8 @@ func player_die():
 
 func take_damage():
 	SoundPlayer.play_sound(SoundPlayer.library.CAT_HURT)
-	player_die()
+	animationPlayer.play("Gethit")
+	#player_die()
 	if debug:
 		print("player was damaged")
 	

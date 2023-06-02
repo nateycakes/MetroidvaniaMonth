@@ -12,6 +12,7 @@ var player_spawn_location = Vector2.ZERO
 #var for holding the path of the last room the player left. Used for player spawn location logic
 var from_room: String = "" 
 
+
 func _ready() -> void:
 	player.connect_camera(camera)
 	#player_spawn_location = player.position
