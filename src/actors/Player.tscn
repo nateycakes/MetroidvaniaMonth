@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
+[ext_resource path="res://src/actors/Hurtbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/actors/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/actors/DefaultPlayerMovementData.tres" type="Resource" id=3]
 [ext_resource path="res://assets/actorAssets/CatSpritesheet.png" type="Texture" id=4]
+[ext_resource path="res://src/actors/Hitbox.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6, 6.5 )
+extents = Vector2( 8, 5.5 )
 
 [sub_resource type="Animation" id=13]
 resource_name = "Gethit"
@@ -87,14 +89,63 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8, 3.75 )
+
+[sub_resource type="RectangleShape2D" id=15]
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 2
 script = ExtResource( 2 )
 moveData = ExtResource( 3 )
+debug = 1
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -12 )
+texture = ExtResource( 4 )
+hframes = 6
+vframes = 4
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -6.5 )
+position = Vector2( 0, -5.5 )
 shape = SubResource( 1 )
 
 [node name="JumpBufferTimer" type="Timer" parent="."]
@@ -108,13 +159,6 @@ one_shot = true
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 position = Vector2( 0, -8 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -12 )
-texture = ExtResource( 4 )
-hframes = 6
-vframes = 4
-frame = 1
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
 anims/Gethit = SubResource( 13 )
@@ -123,5 +167,20 @@ anims/Jump = SubResource( 12 )
 anims/Move = SubResource( 10 )
 anims/RESET = SubResource( 11 )
 
+[node name="Hurtbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( 0, -5.75 )
+shape = SubResource( 14 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 25, -10 )
+shape = SubResource( 15 )
+disabled = true
+
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_JumpBufferTimer_timeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="_on_CoyoteTimer_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

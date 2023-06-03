@@ -39,3 +39,5 @@ func play_set_animation(targetAnimationPlayer):
 	match animation_type:
 		ANIMATION_TYPE.LOOP: targetAnimationPlayer.play("MoveAlongPathLoop")
 		ANIMATION_TYPE.PINGPONG: targetAnimationPlayer.play("MoveAlongPathPingPong")
+
+

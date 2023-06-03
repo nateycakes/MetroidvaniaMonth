@@ -23,7 +23,8 @@ var double_jump = 1
 var buffered_jump = false
 var coyote_time_active = false
 var is_exiting = false #is the player leaving a room?
-
+var is_attacking = false
+var is_jumping = false
 
 
 ######################   END HEADER SECTION ####################################
@@ -81,7 +82,8 @@ func move_state(input_vector, delta):
 		reset_double_jump()
 	else: #logic for if the player is still in the air at the start
 		#keep them in the jump animation while they're in air falling (this could be "falling animation" if we make one)
-		animationPlayer.play("Jump")
+		#animationPlayer.play("Jump")
+		pass
 	
 	if player_can_jump(): #player is on the ground and has coyote time
 		handle_input_jump() #has the player submitted a jump? (pushed the button)
@@ -173,6 +175,7 @@ func handle_input_jump():
 			velocity.y = moveData.JUMP_FORCE
 			buffered_jump = false
 			SoundPlayer.play_sound(SoundPlayer.library.CAT_JUMP)
+			if not is_on_floor(): animationPlayer.play("Jump")
 		
 		
 
@@ -191,6 +194,7 @@ func handle_input_double_jump():
 		velocity.y = moveData.DOUBLE_JUMP_FORCE
 		double_jump -= 1
 		SoundPlayer.play_sound(SoundPlayer.library.CAT_DOUBLEJUMP)
+		animationPlayer.play("Jump")
 		if debug: 
 			print ("I am double jumping rn")
 			print ("is on floor: " + str(is_on_floor()))
@@ -247,3 +251,15 @@ func _on_JumpBufferTimer_timeout() -> void:
 
 func _on_CoyoteTimer_timeout() -> void:
 	coyote_time_active = false
+
+
+
+func _on_Hurtbox_area_entered(area: Area2D) -> void:
+	take_damage()
+
+
+
+
+
+
+

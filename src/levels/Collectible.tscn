@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/levelAssets/pickup.png" type="Texture" id=1]
+[ext_resource path="res://src/actors/Hurtbox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/Collectible.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 5.65686, 5.65686 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.07107, 7.07107 )
 
 [node name="Collectible" type="Node2D"]
 script = ExtResource( 3 )
@@ -13,12 +14,13 @@ script = ExtResource( 3 )
 texture = ExtResource( 1 )
 hframes = 2
 
-[node name="CollectibleHitbox" type="Area2D" parent="."]
-collision_layer = 8
+[node name="Hurtbox" parent="." instance=ExtResource( 2 )]
+collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectibleHitbox"]
-position = Vector2( 0, 2.38419e-07 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( -5.96046e-08, 0 )
 rotation = 0.785398
-shape = SubResource( 1 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 2 )
 
-[connection signal="body_entered" from="CollectibleHitbox" to="." method="_on_CollectibleHitbox_body_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
