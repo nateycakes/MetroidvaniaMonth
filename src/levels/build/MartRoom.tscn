@@ -47,8 +47,8 @@ animation_type = 1
 speed = 2.0
 
 [node name="PathFollow2D" parent="PatrollingEnemy" index="0"]
-position = Vector2( 24, 0 )
-offset = 54.0059
+position = Vector2( 30.3003, -32.1971 )
+offset = 17.6345
 
 [node name="AnimationPlayer" parent="PatrollingEnemy" index="1"]
 playback_speed = 2.0

@@ -5,5 +5,5 @@ class_name Hitbox
 
 func _on_Hitbox_body_entered(body: Node) -> void:
 	if body is Player:
-			body.take_damage()
-			
+			#body.take_damage()
+			print("old way of handling damage fired")

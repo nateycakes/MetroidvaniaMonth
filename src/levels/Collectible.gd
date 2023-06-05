@@ -9,7 +9,6 @@ enum COLLECTIBLE_TYPE {
 }
 
 export(COLLECTIBLE_TYPE) var collectible_type = COLLECTIBLE_TYPE.DOUBLEJUMP setget set_collectible_type
-onready var hitbox = $CollectibleHitbox
 #onready var animationPlayer = $AnimationPlayer
 
 
@@ -34,21 +33,6 @@ func get_collected(sound):
 
 
 # --------- SIGNALS -----------------
-
-func _on_CollectibleHitbox_body_entered(body: Node) -> void:
-#	if body is Player:
-#		var sfx : Resource
-#		match collectible_type:
-#			COLLECTIBLE_TYPE.DOUBLEJUMP:
-#				increase_double_jump_count(body)
-#				sfx = SoundPlayer.library.PICKUP_POWERUP
-#			COLLECTIBLE_TYPE.HEALTH:
-#				sfx = SoundPlayer.library.PICKUP_HEALTH
-#			COLLECTIBLE_TYPE.LOGBOOK:
-#				sfx = SoundPlayer.library.PICKUP_DISC
-#		get_collected(sfx)
-	print("tee hee")
-
 
 func _on_Hurtbox_body_entered(body: Node) -> void:
 	if body is Player:

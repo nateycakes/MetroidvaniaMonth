@@ -6,9 +6,9 @@ export(int) var GRAVITY = 400
 #additional force to make player fall once jump is released
 export(int) var ADDITIONAL_FALL_GRAVITY = 0
 #how strong the player's jump will be (negative values are "up")
-export(int) var JUMP_FORCE = -150
+export(int) var JUMP_FORCE = -185
 #how strong the player's DOUBLE jump will be (negative values are "up")
-export(int) var DOUBLE_JUMP_FORCE = -175
+export(int) var DOUBLE_JUMP_FORCE = -180
 #the minimum height a jump will be
 export(int) var MINIMUM_JUMP_THRESHOLD = -40
 #how long the coyote timer will be

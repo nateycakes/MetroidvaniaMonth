@@ -62,10 +62,7 @@ transition_type = "EXIT_RIGHT"
 [node name="CollisionShape2D" parent="RoomExitZone2" index="0"]
 shape = SubResource( 2 )
 
-[node name="Collectible" parent="." index="9" instance=ExtResource( 4 )]
-position = Vector2( 72, -72 )
-
-[node name="RoomExitZone3" parent="." index="10" instance=ExtResource( 3 )]
+[node name="RoomExitZone3" parent="." index="9" instance=ExtResource( 3 )]
 position = Vector2( -192, 8 )
 target_room_path = "res://src/levels/build/MartRoom.tscn"
 transition_type = "EXIT_DOWN"
@@ -74,11 +71,14 @@ transition_type = "EXIT_DOWN"
 position = Vector2( 16, 8 )
 shape = SubResource( 3 )
 
-[node name="PatrollingEnemy" parent="." index="11" instance=ExtResource( 5 )]
+[node name="PatrollingEnemy" parent="." index="10" instance=ExtResource( 5 )]
 position = Vector2( -64, -40 )
 curve = SubResource( 4 )
 animation_type = 1
 speed = 5.0
+
+[node name="Collectible" parent="." index="11" instance=ExtResource( 4 )]
+position = Vector2( 72, -72 )
 
 [editable path="RoomExitZone"]
 [editable path="RoomExitZone2"]

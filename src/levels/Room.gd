@@ -52,10 +52,10 @@ func _on_player_died():
 
 func instance_new_player(location):
 	#handle creating a new player instance and setting its position within the scene
-	var player = PlayerScene.instance()
-	player.position = location
-	add_child(player)
-	player.connect_camera(camera)
+	var newPlayer = PlayerScene.instance()
+	newPlayer.position = location
+	add_child(newPlayer)
+	newPlayer.connect_camera(camera)
 
 func _on_save_point_reached(newSpawnLocation):
 	update_player_spawn_location(newSpawnLocation)
