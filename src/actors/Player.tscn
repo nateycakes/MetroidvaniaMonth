@@ -646,6 +646,7 @@ hframes = 2
 
 [node name="Hitbox" parent="Position2D" instance=ExtResource( 5 )]
 position = Vector2( 27, -10 )
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Hitbox"]
 shape = SubResource( 15 )

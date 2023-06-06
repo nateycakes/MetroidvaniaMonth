@@ -53,8 +53,8 @@ func _physics_process(delta: float) -> void:
 	input_vector = get_player_input_direction() 
 	
 	#Ground Check Logic
-	is_airborne = is_on_floor() #is the player in the air?
-	if not is_airborne:
+	is_airborne = not is_on_floor() #is the player in the air?
+	if not is_airborne: #convoluted way to see if they're on the ground LOL
 		reset_double_jump()
 		is_jumping = false
 		
@@ -81,6 +81,9 @@ func _physics_process(delta: float) -> void:
 	just_landed = is_on_floor() and was_in_air
 	#check if player will have coyote time next frame
 	coyote_time_check()
+	
+	if just_landed:
+		SoundPlayer.play_sound(SoundLibrary.CAT_LAND)
 	
 	if is_meowing(): #the most important function in the entire game
 		handle_meowing()
@@ -254,7 +257,6 @@ func player_die():
 
 func take_damage():
 	SoundPlayer.play_sound(SoundPlayer.library.CAT_HURT)
-	#animationPlayer.play("Gethit")
 	if debug:
 		print("player was damaged")
 
