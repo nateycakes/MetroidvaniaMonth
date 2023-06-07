@@ -4,6 +4,7 @@ class_name Collectible
 
 enum COLLECTIBLE_TYPE {
 	DOUBLEJUMP,
+	CLAWS,
 	HEALTH,
 	LOGBOOK
 }
@@ -45,4 +46,6 @@ func _on_Hurtbox_body_entered(body: Node) -> void:
 				sfx = SoundPlayer.library.PICKUP_HEALTH
 			COLLECTIBLE_TYPE.LOGBOOK:
 				sfx = SoundPlayer.library.PICKUP_DISC
+			COLLECTIBLE_TYPE.CLAWS:
+				Events.player_collected_claws = true
 		get_collected(sfx)

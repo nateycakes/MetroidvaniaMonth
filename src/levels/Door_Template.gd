@@ -5,6 +5,7 @@ onready var physicsCollisionShape = $CollisionShape2D
 onready var animatedSprite = $AnimatedSprite
 
 
+
 enum doorStates {
 	OPEN,
 	CLOSED
@@ -22,7 +23,9 @@ func _ready() -> void:
 
 #only player is masking to this layer, so no need to test if its the player
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
-	hurtboxCollisionShape.disabled = true
-	physicsCollisionShape.disabled = true
+	hurtboxCollisionShape.set_deferred("Disabled", true)
+	#physicsCollisionShape.disabled = true
 	animatedSprite.play("OPEN")
 	state = doorStates.OPEN
+	self.set_collision_layer_bit(1, false)
+	self.set_collision_mask_bit(0, false)

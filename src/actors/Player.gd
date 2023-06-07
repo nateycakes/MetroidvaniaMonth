@@ -37,13 +37,14 @@ var just_left_ground : bool = false
 var just_landed : bool = false
 var is_airborne : bool = false
 
+var can_attack : bool = false #will control when player has melee or not
 
 ######################   END HEADER SECTION ####################################
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass #END ready()
+	can_attack = Events.player_collected_claws
 
 
 func _physics_process(delta: float) -> void:
@@ -95,7 +96,7 @@ func _physics_process(delta: float) -> void:
 ##########################  CUSTOM  FUNCTIONS  #################################
 
 func determine_current_state(var input_vector, var currentState):
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("attack") and can_attack:
 		return states.ATTACK
 	if (currentState != states.ATTACK) and (currentState != states.KNOCKBACK):
 		if player_inputting_move(input_vector):

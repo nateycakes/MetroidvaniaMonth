@@ -8,3 +8,5 @@ var current_save_room : String = "" #path to the currently set save room
 
 var current_room_path : String = "" #path to the resource of the current room
 var previous_room_path : String = "" #path to the resource of the previous room
+
+var player_collected_claws : bool = true #variable to track if the player collected melee indepentent of scenes
