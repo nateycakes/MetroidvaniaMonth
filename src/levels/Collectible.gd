@@ -47,5 +47,6 @@ func _on_Hurtbox_body_entered(body: Node) -> void:
 			COLLECTIBLE_TYPE.LOGBOOK:
 				sfx = SoundPlayer.library.PICKUP_DISC
 			COLLECTIBLE_TYPE.CLAWS:
-				Events.player_collected_claws = true
+				PlayerStats.has_collected_claws = true
+				sfx = SoundPlayer.library.PICKUP_POWERUP
 		get_collected(sfx)

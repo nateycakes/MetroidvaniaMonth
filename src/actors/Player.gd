@@ -16,11 +16,13 @@ onready var velocity : Vector2 = Vector2.ZERO
 onready var playerSprite: Sprite = $Sprite
 onready var jumpBufferTimer: Timer = $JumpBufferTimer
 onready var coyoteTimer: Timer = $CoyoteTimer
+onready var knockbackTimer : Timer = $KnockbackTimer
 onready var remoteTransform2d: RemoteTransform2D = $RemoteTransform2D
 onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 onready var animationTree : AnimationTree = $AnimationTree
 onready var animationState = $AnimationTree.get("parameters/playback")
-
+onready var playerStats = PlayerStats
+onready var hurtBox = $Hurtbox
 
 var state = states.MOVE
 var double_jump: int = 1
@@ -37,15 +39,17 @@ var just_left_ground : bool = false
 var just_landed : bool = false
 var is_airborne : bool = false
 
-var can_attack : bool = false #will control when player has melee or not
+var has_melee_ability : bool = false #will control when player has melee or not
 
 ######################   END HEADER SECTION ####################################
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	can_attack = Events.player_collected_claws
-
+	has_melee_ability = playerStats.has_collected_claws
+	knockbackTimer.wait_time = moveData.KNOCKBACK_DURATION
+	playerStats.connect("no_health", self, "player_die")
+	
 
 func _physics_process(delta: float) -> void:
 	
@@ -63,9 +67,10 @@ func _physics_process(delta: float) -> void:
 	if player_inputting_move(input_vector):
 		update_animation_blend_position(input_vector.x)
 	
-	
+	#print_current_state_to_console()
 	#determine jump/fall state
-	handle_jumping(input_vector, delta)
+	if state != states.KNOCKBACK:
+		handle_jumping(input_vector, delta)
 	state = determine_current_state(input_vector, state)
 	run_state_machine(input_vector, delta)
 	
@@ -95,14 +100,28 @@ func _physics_process(delta: float) -> void:
 
 ##########################  CUSTOM  FUNCTIONS  #################################
 
+
 func determine_current_state(var input_vector, var currentState):
-	if Input.is_action_just_pressed("attack") and can_attack:
+	if Input.is_action_just_pressed("attack") and has_melee_ability and currentState != states.KNOCKBACK :
 		return states.ATTACK
-	if (currentState != states.ATTACK) and (currentState != states.KNOCKBACK):
+	if (currentState != states.ATTACK) and (currentState != states.KNOCKBACK): #if they're not attacking or in knockback
 		if player_inputting_move(input_vector):
 			return states.MOVE
 		else:
 			return states.IDLE
+	if currentState == states.KNOCKBACK: #need to return SOMETHING if we're in knockback
+		return states.KNOCKBACK
+
+func print_current_state_to_console():
+	match state:
+		states.MOVE: 
+			print("MOVE STATE")
+		states.ATTACK:
+			print("ATTACK STATE")
+		states.IDLE:
+			print("IDLE STATE")
+		states.KNOCKBACK:
+			print("KNOCKBACK STATE")
 
 func run_state_machine(input_vector: Vector2, delta: float):
 	match state:
@@ -112,6 +131,8 @@ func run_state_machine(input_vector: Vector2, delta: float):
 			attack_state(input_vector, delta)
 		states.IDLE:
 			idle_state(input_vector, delta)
+		states.KNOCKBACK:
+			knockback_state(input_vector, delta)
 
 func coyote_time_check():
 	#did the player just leave AND are they falling downward?
@@ -134,6 +155,10 @@ func move_state(input_vector, delta):
 		orient_sprite_to_movement(input_vector)
 		animationState.travel("MOVE")
 	
+
+
+func knockback_state(input_vector, delta):
+	velocity.x = 0
 
 
 func idle_state(input_vector, delta):
@@ -235,8 +260,6 @@ func reset_double_jump():
 func player_can_jump(): #can the player currently jump?
 	return is_on_floor() or coyote_time_active
 
-
-
 func handle_buffered_input_jump():
 	#BUFFERED JUMP LOGIC
 	#player doesn't need to be super precise in order to jump immediately after landing
@@ -257,9 +280,20 @@ func player_die():
 	queue_free() #remove this instance of the player
 
 func take_damage():
+	#play our player damaged sound effect,
 	SoundPlayer.play_sound(SoundPlayer.library.CAT_HURT)
+	#transition to get hit animations
+	animationState.travel("GETHIT")
+	#decrement player HP
+	playerStats.health -= 1
+	#start invulnerability for as long as set in playerMoveData
+	hurtBox.start_iframes(moveData.IFRAME_DURATION)
+	#switch states
+	state = states.KNOCKBACK
+	knockbackTimer.start()
 	if debug:
 		print("player was damaged")
+		print("health is now:" + str(playerStats.health))
 
 func is_meowing() -> bool:
 	return Input.is_action_just_pressed("meow")
@@ -270,7 +304,6 @@ func handle_meowing():
 func connect_camera(camera):
 	var camera_path = camera.get_path()
 	remoteTransform2d.remote_path = camera_path
-
 
 func attack_animation_finished():
 	state = states.IDLE
@@ -287,3 +320,8 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	take_damage()
 
 
+func _on_KnockbackTimer_timeout() -> void:
+	state = states.IDLE
+	if debug:
+		print("knockback ended")
+	

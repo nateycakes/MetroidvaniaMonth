@@ -50,9 +50,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-SoundPlayer="*res://src/sound/SoundPlayer.tscn"
-ScreenTransitions="*res://src/ui/ScreenTransitions.tscn"
 Events="*res://src/levels/Events.gd"
+ScreenTransitions="*res://src/ui/ScreenTransitions.tscn"
+SoundPlayer="*res://src/sound/SoundPlayer.tscn"
+PlayerStats="*res://src/actors/PlayerStats.tscn"
 
 [display]
 

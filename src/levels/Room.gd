@@ -15,7 +15,6 @@ var from_room: String = ""
 
 func _ready() -> void:
 	player.connect_camera(camera)
-	#player_spawn_location = player.position
 	room_setup()
 	Events.connect("player_died", self, "_on_player_died") #listen for global player_died signal from Events.gd
 	Events.connect("save_point_reached", self, "_on_save_point_reached")
@@ -31,7 +30,7 @@ func determine_enter_location():
 	#iterate through all the room's potential spawn zones, and match the zones' "from_room" to the one set in Events.gd
 	var entryPoints = get_tree().get_nodes_in_group("Spawn_Zones")
 	#if there are no entry points, dont do this (might help for inital game state)
-	if entryPoints.empty(): return #or Events.previous_room_path = ""
+	if entryPoints.empty(): return #Events.previous_room_path = ""
 	
 	for spawnPoint in get_tree().get_nodes_in_group("Spawn_Zones") :
 		#find the spawnPoint that has our previous room
@@ -56,6 +55,7 @@ func instance_new_player(location):
 	newPlayer.position = location
 	add_child(newPlayer)
 	newPlayer.connect_camera(camera)
+	PlayerStats.health = PlayerStats.max_health
 
 func _on_save_point_reached(newSpawnLocation):
 	update_player_spawn_location(newSpawnLocation)

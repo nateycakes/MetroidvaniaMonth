@@ -27,5 +27,5 @@ func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	#physicsCollisionShape.disabled = true
 	animatedSprite.play("OPEN")
 	state = doorStates.OPEN
-	self.set_collision_layer_bit(1, false)
-	self.set_collision_mask_bit(0, false)
+	self.set_collision_layer_bit(1, false) #disable being on the world layer (physics layer 2)
+	self.set_collision_mask_bit(0, false) #disable masking to the player (physics layer 1)

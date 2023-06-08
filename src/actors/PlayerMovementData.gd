@@ -23,3 +23,7 @@ export(int) var MAX_HORIZONTAL_SPEED = 100
 export(int) var MAX_FALL_SPEED = 18000
 #total number of additional jumps the player has
 export(int) var DOUBLE_JUMP_COUNT = 0
+#how long iframes(invulnerability) should last when player gets hit
+export(float) var IFRAME_DURATION = 1.5
+#how long knockback will last
+export(float) var KNOCKBACK_DURATION = 0.5
