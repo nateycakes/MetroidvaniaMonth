@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/levels/Collectible.gd"
 }, {
+"base": "Resource",
+"class": "MusicLibrary",
+"language": "GDScript",
+"path": "res://src/sound/MusicLibrary.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
@@ -36,6 +41,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Collectible": "",
+"MusicLibrary": "",
 "Player": "",
 "PlayerMovementData": "",
 "PlayerSpawnZone": "",
@@ -51,9 +57,10 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://src/levels/Events.gd"
+MusicPlayer="*res://src/sound/MusicPlayer.tscn"
+PlayerStats="*res://src/actors/PlayerStats.tscn"
 ScreenTransitions="*res://src/ui/ScreenTransitions.tscn"
 SoundPlayer="*res://src/sound/SoundPlayer.tscn"
-PlayerStats="*res://src/actors/PlayerStats.tscn"
 
 [display]
 

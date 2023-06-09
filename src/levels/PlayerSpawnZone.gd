@@ -33,6 +33,9 @@ func _on_PlayerSpawnZone_body_entered(body: Node) -> void:
 	if not body is Player: return #do nothing if its not the player
 	
 	if spawn_zone_type == SPAWN_ZONE_TYPES.SAVE_POINT:
-		#we only want to emit this when the player moves over it and it's a dedicated save point 
-		Events.emit_signal("save_point_reached", position)
+		#we only want to emit this when the player moves over it and it's a dedicated save point
+		#emit the save point reached so Events will remember WHICH save room this is
+		var new_save_point_path : String = get_parent().filename
+		Events.emit_signal("save_point_reached", position, new_save_point_path)
+		
 		

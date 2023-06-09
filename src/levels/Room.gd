@@ -7,6 +7,8 @@ onready var camera: Camera2D = $Camera2D
 onready var player: KinematicBody2D = $Player
 onready var respawnTimer: Timer = $RespawnTimer
 
+export(Events.biomes) var biome 
+
 #where should we place the player when the room starts?
 var player_spawn_location = Vector2.ZERO
 #var for holding the path of the last room the player left. Used for player spawn location logic
@@ -21,9 +23,33 @@ func _ready() -> void:
 
 func room_setup():
 	determine_enter_location()
+	Events.current_room_biome = biome #set the biome in the events appropriately
+	if Events.previous_room_biome != biome:
+		print("entering a new biome")
+		var newBGM = match_bgm_to_biome(biome)
+		MusicPlayer.crossfade_songs(newBGM)
+		
 	player.position = player_spawn_location
 	#we are now finished setting up the current room which will be the next "previous room" when we transition
 	Events.previous_room_path = filename
+	Events.previous_room_biome = biome
+
+func match_bgm_to_biome(biomeType):
+	#this function matches the enumerator defined in Events.gd to their corresponding resource as defined
+	#in the musicLibrary and returns the matching resource from musicLibrary
+	match biomeType:
+		Events.biomes.ARCHIVES:
+			return MusicPlayer.library.ARCHIVES
+		Events.biomes.CHECKPOINT:
+			return MusicPlayer.library.CHECKPOINT
+		Events.biomes.HIGHRISE:
+			return MusicPlayer.library.HIGHRISE
+		Events.biomes.STREETS:
+			return MusicPlayer.library.STREETS
+		Events.biomes.UNDERGROUND:
+			return MusicPlayer.library.UNDERGROUND
+	#default value in case something isn't set correctly
+	#return MusicPlayer.library.STREETS
 
 
 func determine_enter_location():
@@ -33,7 +59,7 @@ func determine_enter_location():
 	if entryPoints.empty(): return #Events.previous_room_path = ""
 	
 	for spawnPoint in get_tree().get_nodes_in_group("Spawn_Zones") :
-		#find the spawnPoint that has our previous room
+		#find the spawnPoint that has our previous room 
 		if spawnPoint.from_room_scene == Events.previous_room_path:
 			# if player.debug: print("found correct spawnpoint at location : " + str(spawnPoint.position.x) + " , " + str(spawnPoint.position.y))
 			#we have our correct spawnpoint, play the corresponding screen transition
@@ -46,7 +72,8 @@ func update_player_spawn_location(newSpawnLocation : Vector2):
 func _on_player_died():
 	#func to run when the player dies idk what to tell you
 	respawnTimer.start(death_length)
-	yield(respawnTimer, "timeout") #wait for the timer to finish
+	Events.player_just_died = true
+	yield(respawnTimer, "timeout") #wait for the Respawntimer to finish
 	instance_new_player(player_spawn_location)
 
 func instance_new_player(location):
@@ -55,7 +82,11 @@ func instance_new_player(location):
 	newPlayer.position = location
 	add_child(newPlayer)
 	newPlayer.connect_camera(camera)
-	PlayerStats.health = PlayerStats.max_health
+	PlayerStats.health = PlayerStats.max_health #set the GLOBAL PlayerStats health to full
 
-func _on_save_point_reached(newSpawnLocation):
-	update_player_spawn_location(newSpawnLocation)
+func _on_save_point_reached(newSavePointPosition, newSavePointFilepath):
+	#FIRED WHEN THE PLAYER COLLIDES WITH A SAVE POINT
+	update_player_spawn_location(newSavePointPosition)
+	Events.current_save_room = newSavePointFilepath
+	Events.save_point_position = newSavePointPosition
+	

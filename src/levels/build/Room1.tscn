@@ -31,6 +31,7 @@ _data = {
 }
 
 [node name="Room1" instance=ExtResource( 1 )]
+biome = 3
 
 [node name="Player" parent="." index="0"]
 position = Vector2( 24, -72 )

@@ -46,7 +46,7 @@ var has_melee_ability : bool = false #will control when player has melee or not
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	has_melee_ability = playerStats.has_collected_claws
+	has_melee_ability = Events.has_collected_claws
 	knockbackTimer.wait_time = moveData.KNOCKBACK_DURATION
 	playerStats.connect("no_health", self, "player_die")
 	
