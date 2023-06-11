@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/collision.png-0b11eb6a260daecbb40adc68ddd94bf0.stex"
+path="res://.import/LogbookPickupAnimation.png-e681e35c452c297d3c195becce93eb5c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levelAssets/collision.png"
-dest_files=[ "res://.import/collision.png-0b11eb6a260daecbb40adc68ddd94bf0.stex" ]
+source_file="res://assets/levelAssets/LogbookPickupAnimation.png"
+dest_files=[ "res://.import/LogbookPickupAnimation.png-e681e35c452c297d3c195becce93eb5c.stex" ]
 
 [params]
 

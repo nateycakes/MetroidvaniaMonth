@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/levels/Door_Template.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/levelAssets/door_big.png" type="Texture" id=2]
-[ext_resource path="res://assets/levelAssets/door_big_closed.png" type="Texture" id=3]
 
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 64 )
 
 [sub_resource type="AtlasTexture" id=14]
@@ -34,7 +33,7 @@ region = Rect2( 80, 0, 16, 64 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ SubResource( 13 ) ],
+"frames": [ SubResource( 15 ) ],
 "loop": false,
 "name": "CLOSED",
 "speed": 5.0

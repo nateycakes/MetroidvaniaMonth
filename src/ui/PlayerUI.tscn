@@ -5,6 +5,9 @@
 
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 2
+__meta__ = {
+"_editor_description_": "Health UI is 12x10 min in case the editor resizes it again oop"
+}
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0

@@ -3,9 +3,12 @@ extends Node2D
 const PlayerScene = preload("res://src/actors/Player.tscn")
 const death_length = 1 #how long should we chill when the player dies?
 
+onready var roomBackgroundLibrary: RoomBackgroundLibrary = preload("res://src/levels/RoomBackgroundLibrary.tres") as RoomBackgroundLibrary
+
 onready var camera: Camera2D = $Camera2D
 onready var player: KinematicBody2D = $Player
 onready var respawnTimer: Timer = $RespawnTimer
+onready var roomBackground = $RoomBackground
 
 export(Events.biomes) var biome 
 
@@ -29,11 +32,35 @@ func room_setup():
 		#print("entering a new biome")
 		var newBGM = match_bgm_to_biome(biome)
 		MusicPlayer.crossfade_songs(newBGM)
+		set_room_background(biome)
 		
 	player.position = player_spawn_location
 	#we are now finished setting up the current room which will be the next "previous room" when we transition
 	Events.previous_room_path = filename
 	Events.previous_room_biome = biome
+
+func match_background_to_biome(biomeType):
+	#this function matches the enumerator defined in Events.gd to their corresponding resource as defined
+	#in the roomBackgroundLibrary and returns an array of [BACK LAYER, FRONT LAYER] as defined in the roomBackgroundLibrary
+	match biomeType:
+		Events.biomes.ARCHIVES:
+			return [ roomBackgroundLibrary.ARCHIVES_LAYER_BACK, roomBackgroundLibrary.ARCHIVES_LAYER_FRONT ]
+		Events.biomes.CHECKPOINT:
+			return [ roomBackgroundLibrary.CHECKPOINT_LAYER_BACK, roomBackgroundLibrary.CHECKPOINT_LAYER_FRONT ]
+		Events.biomes.HIGHRISE:
+			return [ roomBackgroundLibrary.HIGHRISE_LAYER_BACK, roomBackgroundLibrary.HIGHRISE_LAYER_FRONT ]
+		Events.biomes.STREETS:
+			return [ roomBackgroundLibrary.STREETS_LAYER_BACK, roomBackgroundLibrary.STREETS_LAYER_FRONT ]
+		Events.biomes.UNDERGROUND:
+			return [ roomBackgroundLibrary.UNDERGROUND_LAYER_BACK, roomBackgroundLibrary.UNDERGROUND_LAYER_FRONT ]
+	#default value in case something isn't set correctly
+	#return MusicPlayer.library.STREETS
+
+func set_room_background(biomeType):
+	var biomeBG = [ "", "" ]
+	biomeBG  = match_background_to_biome(biomeType)
+	roomBackground.set_background(biomeBG[0], biomeBG[1])
+	
 
 func match_bgm_to_biome(biomeType):
 	#this function matches the enumerator defined in Events.gd to their corresponding resource as defined

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hazard.png-db9d68fdd72b24bc79f3ffa9732331f2.stex"
+path="res://.import/underground_p_layer_back.png-bd9442c6c03fe58af6c47e619bee8555.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levelAssets/hazard.png"
-dest_files=[ "res://.import/hazard.png-db9d68fdd72b24bc79f3ffa9732331f2.stex" ]
+source_file="res://assets/levelAssets/backgrounds/underground_p_layer_back.png"
+dest_files=[ "res://.import/underground_p_layer_back.png-bd9442c6c03fe58af6c47e619bee8555.stex" ]
 
 [params]
 

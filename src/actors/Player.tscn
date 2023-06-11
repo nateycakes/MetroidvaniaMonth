@@ -584,7 +584,7 @@ states/MOVE/node = SubResource( 30 )
 states/MOVE/position = Vector2( 708, 224 )
 transitions = [ "IDLE", "MOVE", SubResource( 39 ), "MOVE", "IDLE", SubResource( 40 ), "MOVE", "ATTACK", SubResource( 41 ), "ATTACK", "IDLE", SubResource( 42 ), "MOVE", "GETHIT", SubResource( 47 ), "IDLE", "GETHIT", SubResource( 48 ), "GETHIT", "IDLE", SubResource( 49 ) ]
 start_node = "IDLE"
-graph_offset = Vector2( -35, -30 )
+graph_offset = Vector2( -75, -58 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
 
@@ -664,7 +664,7 @@ active = true
 parameters/playback = SubResource( 26 )
 parameters/ATTACK/blend_position = 1.0
 parameters/GETHIT/blend_position = 0.442979
-parameters/IDLE/blend_position = 1.0
+parameters/IDLE/blend_position = 0.138535
 parameters/MOVE/blend_position = 1.0
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_JumpBufferTimer_timeout"]

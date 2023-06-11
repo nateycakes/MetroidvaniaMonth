@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/levels/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/PlayerSpawnZone.tscn" type="PackedScene" id=2]
@@ -8,10 +8,6 @@
 [ext_resource path="res://src/levels/Door_LARGE.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-resource_local_to_scene = true
-extents = Vector2( 8, 32 )
-
-[sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 8, 32 )
 
@@ -33,10 +29,10 @@ _data = {
 [node name="Room1" instance=ExtResource( 1 )]
 biome = 3
 
-[node name="Player" parent="." index="0"]
+[node name="Player" parent="." index="1"]
 position = Vector2( 24, -72 )
 
-[node name="LevelTiles" parent="." index="1"]
+[node name="LevelTiles" parent="." index="2"]
 tile_data = PoolIntArray( -589833, 2, 1, -589832, 2, 65536, -589831, 2, 65536, -589830, 2, 65536, -589829, 2, 65536, -589828, 2, 65536, -589827, 2, 65536, -589826, 2, 65536, -589825, 2, 65536, -655360, 2, 65536, -655359, 2, 65536, -655358, 2, 65536, -655357, 2, 65536, -655356, 2, 65536, -655355, 2, 65536, -655354, 2, 65536, -655353, 2, 65536, -655352, 2, 65536, -655351, 2, 65536, -655350, 2, 65536, -655349, 2, 65536, -655348, 2, 65536, -655347, 2, 65536, -655346, 2, 65536, -655345, 2, 65536, -655344, 2, 65536, -655343, 2, 65536, -655342, 2, 65536, -655341, 2, 65536, -655340, 2, 65536, -655339, 2, 2, -524297, 2, 131073, -524296, 2, 196619, -524295, 2, 196619, -524294, 2, 196619, -524293, 2, 196619, -524292, 2, 196619, -524291, 2, 196619, -524290, 2, 196619, -524289, 2, 196619, -589824, 2, 3, -589823, 2, 131072, -589822, 2, 131072, -589821, 2, 131072, -589820, 2, 131072, -589819, 2, 131072, -589818, 2, 131072, -589817, 2, 131072, -589816, 2, 131072, -589815, 2, 131072, -589814, 2, 131072, -589813, 2, 131072, -589812, 2, 131072, -589811, 2, 131072, -589810, 2, 131072, -589809, 2, 131072, -589808, 2, 131072, -589807, 2, 131072, -589806, 2, 131072, -589805, 2, 131072, -589804, 2, 131072, -589803, 2, 65538, -458761, 2, 131073, -458760, 2, 196619, -458759, 2, 196619, -458758, 2, 196619, -458757, 2, 196619, -458756, 2, 196619, -458755, 2, 196619, -458754, 2, 196619, -458753, 2, 196619, -524288, 2, 131074, -393225, 2, 131073, -393224, 2, 196619, -393223, 2, 196619, -393222, 2, 196619, -393221, 2, 196619, -393220, 2, 196619, -393219, 2, 196619, -393218, 2, 196619, -393217, 2, 196619, -458752, 2, 131074, -327695, 2, 1, -327694, 2, 65536, -327693, 2, 65536, -327692, 2, 65536, -327691, 2, 65536, -327690, 2, 65536, -327689, 2, 65540, -327688, 2, 196619, -327687, 2, 196619, -327686, 2, 196619, -327685, 2, 196619, -327684, 2, 196619, -327683, 2, 196619, -327682, 2, 196619, -327681, 2, 196619, -393216, 2, 131074, -262159, 2, 131073, -262158, 2, 3, -262157, 2, 131072, -262156, 2, 131072, -262155, 2, 131072, -262154, 2, 131072, -262153, 2, 131072, -262152, 2, 131072, -262151, 2, 131072, -262150, 2, 131072, -262149, 2, 131072, -262148, 2, 131072, -262147, 2, 131072, -262146, 2, 131072, -262145, 2, 131072, -327680, 2, 65538, -196623, 2, 131073, -196622, 2, 131074, -262136, 2, 196608, -262135, 2, 196609, -262134, 2, 196609, -262133, 2, 196609, -262132, 2, 196609, -262131, 2, 196609, -262130, 2, 196609, -262129, 2, 196609, -262128, 2, 196609, -262127, 2, 196609, -262126, 2, 196609, -262125, 2, 196609, -262124, 2, 196609, -262123, 2, 196610, -131087, 2, 131073, -131086, 2, 131074, -196605, 2, 196608, -196604, 2, 196609, -196603, 2, 196610, -65551, 2, 131073, -65550, 2, 131074, -15, 2, 131073, -14, 2, 131074, 65521, 2, 131073, 65522, 2, 131074, 65527, 2, 1, 65528, 2, 65536, 65529, 2, 65536, 65530, 2, 65536, 65531, 2, 65536, 65532, 2, 65536, 65533, 2, 65536, 65534, 2, 65536, 65535, 2, 65536, 0, 2, 65536, 1, 2, 65536, 2, 2, 65536, 3, 2, 65536, 4, 2, 65536, 5, 2, 65536, 6, 2, 65536, 7, 2, 2, 131057, 2, 131073, 131058, 2, 131074, 131063, 2, 131073, 131064, 2, 196619, 131065, 2, 196619, 131066, 2, 196619, 131067, 2, 196619, 131068, 2, 196619, 131069, 2, 196619, 131070, 2, 196619, 131071, 2, 196619, 65536, 2, 196619, 65537, 2, 196619, 65538, 2, 196619, 65539, 2, 196619, 65540, 2, 196619, 65541, 2, 196619, 65542, 2, 196619, 65543, 2, 65539, 65544, 2, 65536, 65545, 2, 65536, 65546, 2, 65536, 65547, 2, 65536, 65548, 2, 65536, 65549, 2, 65536, 65550, 2, 65536, 65551, 2, 65536, 65552, 2, 65536, 65553, 2, 65536, 65554, 2, 65536, 65555, 2, 65536, 65556, 2, 65536, 65557, 2, 65536, 65558, 2, 2, 196593, 2, 65537, 196594, 2, 65538, 196599, 2, 65537, 196600, 2, 131072, 196601, 2, 131072, 196602, 2, 131072, 196603, 2, 131072, 196604, 2, 131072, 196605, 2, 131072, 196606, 2, 131072, 196607, 2, 131072, 131072, 2, 131072, 131073, 2, 131072, 131074, 2, 131072, 131075, 2, 131072, 131076, 2, 131072, 131077, 2, 131072, 131078, 2, 131072, 131079, 2, 131072, 131080, 2, 131072, 131081, 2, 131072, 131082, 2, 131072, 131083, 2, 131072, 131084, 2, 131072, 131085, 2, 131072, 131086, 2, 131072, 131087, 2, 131072, 131088, 2, 131072, 131089, 2, 131072, 131090, 2, 131072, 131091, 2, 131072, 131092, 2, 131072, 131093, 2, 131072, 131094, 2, 65538 )
 
 [node name="PlayerSpawnZone" parent="." index="4" instance=ExtResource( 2 )]
@@ -56,22 +52,14 @@ transition_type = "ENTER_LEFT"
 
 [node name="RoomExitZone" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( 232, -80 )
-target_room_path = "res://src/levels/build/Room2.tscn"
+target_room_path = "res://src/levels/build/StartRoom.tscn"
 transition_type = "EXIT_RIGHT"
 
 [node name="CollisionShape2D" parent="RoomExitZone" index="0"]
 position = Vector2( 0, -16 )
 shape = SubResource( 1 )
 
-[node name="RoomExitZone2" parent="." index="8" instance=ExtResource( 3 )]
-position = Vector2( 232, -16 )
-target_room_path = "res://src/levels/build/Room3.tscn"
-transition_type = "EXIT_RIGHT"
-
-[node name="CollisionShape2D" parent="RoomExitZone2" index="0"]
-shape = SubResource( 2 )
-
-[node name="RoomExitZone3" parent="." index="9" instance=ExtResource( 3 )]
+[node name="RoomExitZone3" parent="." index="8" instance=ExtResource( 3 )]
 position = Vector2( -96, -64 )
 target_room_path = "res://src/levels/build/MartRoom.tscn"
 transition_type = "EXIT_DOWN"
@@ -80,30 +68,29 @@ transition_type = "EXIT_DOWN"
 position = Vector2( -4, 32 )
 shape = SubResource( 3 )
 
-[node name="PatrollingEnemy" parent="." index="10" instance=ExtResource( 5 )]
+[node name="PatrollingEnemy" parent="." index="9" instance=ExtResource( 5 )]
 position = Vector2( 48, -104 )
 curve = SubResource( 4 )
 animation_type = 1
 speed = 5.0
 
-[node name="Door_LARGE" parent="." index="11" instance=ExtResource( 6 )]
+[node name="Door_LARGE" parent="." index="10" instance=ExtResource( 6 )]
 position = Vector2( -32, -32 )
 
-[node name="Collectible" parent="." index="12" instance=ExtResource( 4 )]
+[node name="Collectible" parent="." index="11" instance=ExtResource( 4 )]
 position = Vector2( 72, -72 )
 
-[node name="PatrollingEnemy2" parent="." index="13" instance=ExtResource( 5 )]
+[node name="PatrollingEnemy2" parent="." index="12" instance=ExtResource( 5 )]
 position = Vector2( 96, -80 )
 curve = SubResource( 5 )
 animation_type = 1
 speed = 3.0
 
-[node name="Door_LARGE2" parent="." index="14" instance=ExtResource( 6 )]
+[node name="Door_LARGE2" parent="." index="13" instance=ExtResource( 6 )]
 position = Vector2( 184, -96 )
 
-[node name="Door_LARGE3" parent="." index="15" instance=ExtResource( 6 )]
+[node name="Door_LARGE3" parent="." index="14" instance=ExtResource( 6 )]
 position = Vector2( 184, -16 )
 
 [editable path="RoomExitZone"]
-[editable path="RoomExitZone2"]
 [editable path="RoomExitZone3"]
