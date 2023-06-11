@@ -18,7 +18,6 @@ var current_bgm : String = ""
 
 func _ready() -> void:
 	pass
-	#initialize the current track variable
 	#PLAY THE FIRST SONG OF THE GAME HERE SINCE ITS LOADED FIRST
 	#primary_track.music_player.play(library.STREETS)
 

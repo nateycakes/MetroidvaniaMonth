@@ -24,8 +24,9 @@ func _ready() -> void:
 func room_setup():
 	determine_enter_location()
 	Events.current_room_biome = biome #set the biome in the events appropriately
+	
 	if Events.previous_room_biome != biome:
-		print("entering a new biome")
+		#print("entering a new biome")
 		var newBGM = match_bgm_to_biome(biome)
 		MusicPlayer.crossfade_songs(newBGM)
 		
@@ -81,7 +82,7 @@ func instance_new_player(location):
 	var newPlayer = PlayerScene.instance()
 	newPlayer.position = location
 	add_child(newPlayer)
-	newPlayer.connect_camera(camera)
+	newPlayer.connect_camera(camera) #use player's connect cam function to connect here
 	PlayerStats.health = PlayerStats.max_health #set the GLOBAL PlayerStats health to full
 
 func _on_save_point_reached(newSavePointPosition, newSavePointFilepath):
