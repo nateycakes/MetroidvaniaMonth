@@ -21,5 +21,6 @@ current = true
 limit_smoothed = true
 
 [node name="RespawnTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="PlayerUI" parent="." instance=ExtResource( 4 )]

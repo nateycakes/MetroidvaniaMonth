@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pickup.png-d784f0509630279694b5664a184dcba1.stex"
+path="res://.import/HealthIcon.png-34bd86273b1223d839f7c1fd9d4bc254.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/levelAssets/pickup.png"
-dest_files=[ "res://.import/pickup.png-d784f0509630279694b5664a184dcba1.stex" ]
+source_file="res://assets/levelAssets/HealthIcon.png"
+dest_files=[ "res://.import/HealthIcon.png-34bd86273b1223d839f7c1fd9d4bc254.stex" ]
 
 [params]
 

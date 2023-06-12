@@ -5,8 +5,6 @@ signal transition_completed
 onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 
 
-
-
 func play_transition(animationName):
 	animationPlayer.play(animationName)
 

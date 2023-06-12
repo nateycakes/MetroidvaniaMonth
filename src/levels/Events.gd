@@ -15,6 +15,10 @@ enum biomes {
 var current_room_biome = null
 var previous_room_biome = biomes.STREETS #I need SOME default value
 
+var gameStart : bool = true #flag for when the game initially starts
+var gamePaused : bool = false
+
+
 var playerSpawnLocation: Vector2 = Vector2.ZERO #x,y coords for where we plop down a player
 var current_save_room : String = "" #path to the currently set save room
 var save_point_position : Vector2 = Vector2.ZERO #x,y coords for the save point we last interacted with

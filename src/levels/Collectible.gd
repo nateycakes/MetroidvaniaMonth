@@ -4,6 +4,8 @@ class_name Collectible
 signal collected(type) #this should be listened to by some game manager object, not sure if I'll have time to implement
 
 
+
+
 enum COLLECTIBLE_TYPE {
 	DOUBLEJUMP,
 	CLAWS,
@@ -12,12 +14,12 @@ enum COLLECTIBLE_TYPE {
 }
 
 export(COLLECTIBLE_TYPE) var collectible_type = COLLECTIBLE_TYPE.DOUBLEJUMP setget set_collectible_type
-#onready var animationPlayer = $AnimationPlayer
+onready var animatedSprite = $AnimatedSprite
+
 var healthPowerupValue = 1
 
 func _ready() -> void:
-	pass
-	#animationPlayer.play("Idle")
+	set_correct_icon(collectible_type)
 
 
 func acquire_double_jump(player: Player):
@@ -32,7 +34,16 @@ func get_collected(sound):
 	queue_free()
 
 
-
+func set_correct_icon(type):
+	match type:
+		COLLECTIBLE_TYPE.CLAWS:
+			animatedSprite.play("meleeAbility")
+		COLLECTIBLE_TYPE.DOUBLEJUMP:
+			animatedSprite.play("doubleJump")
+		COLLECTIBLE_TYPE.HEALTH:
+			animatedSprite.play("healthPickup")
+		COLLECTIBLE_TYPE.LOGBOOK:
+			animatedSprite.play("logbook")
 
 # --------- SIGNALS -----------------
 

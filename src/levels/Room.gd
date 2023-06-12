@@ -2,6 +2,8 @@ extends Node2D
 
 const PlayerScene = preload("res://src/actors/Player.tscn")
 const death_length = 1 #how long should we chill when the player dies?
+const artifical_load_time = 0.5
+
 
 onready var roomBackgroundLibrary: RoomBackgroundLibrary = preload("res://src/levels/RoomBackgroundLibrary.tres") as RoomBackgroundLibrary
 
@@ -23,6 +25,7 @@ func _ready() -> void:
 	room_setup()
 	Events.connect("player_died", self, "_on_player_died") #listen for global player_died signal from Events.gd
 	Events.connect("save_point_reached", self, "_on_save_point_reached")
+	PauseScreen.on_demand_pause(artifical_load_time)
 
 func room_setup():
 	determine_enter_location()
@@ -78,6 +81,7 @@ func match_bgm_to_biome(biomeType):
 			return MusicPlayer.library.UNDERGROUND
 	#default value in case something isn't set correctly
 	#return MusicPlayer.library.STREETS
+
 
 
 func determine_enter_location():
