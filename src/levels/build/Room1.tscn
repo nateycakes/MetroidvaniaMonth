@@ -92,5 +92,10 @@ position = Vector2( 184, -96 )
 [node name="Door_LARGE3" parent="." index="14" instance=ExtResource( 6 )]
 position = Vector2( 184, -16 )
 
+[node name="PlayerSpawnZone4" parent="." index="17" instance=ExtResource( 2 )]
+position = Vector2( 72, 0 )
+spawn_zone_type = 1
+transition_type = "DEFAULT_IN"
+
 [editable path="RoomExitZone"]
 [editable path="RoomExitZone3"]

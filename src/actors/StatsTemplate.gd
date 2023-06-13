@@ -14,6 +14,7 @@ func set_health(newHealth):
 	emit_signal("health_changed", newHealth) #used by the HealthUI to draw correct number of hearts
 	if health <= 0:
 		emit_signal("no_health")
+		
 
 func restore_health(restoreHP):
 	health = min(health + restoreHP, max_health) #dont let health go higher than max

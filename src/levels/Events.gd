@@ -12,6 +12,8 @@ enum biomes {
 	UNDERGROUND
 }
 
+const START_ROOM_PATH = "res://src/levels/build/StartRoom.tscn"
+
 var current_room_biome = null
 var previous_room_biome = biomes.STREETS #I need SOME default value
 
@@ -28,3 +30,4 @@ var current_room_path : String = "" #path to the resource of the current room
 var previous_room_path : String = "" #path to the resource of the previous room
 
 var has_collected_claws : bool = false  #variable to track if the player collected melee indepentent of scenes
+var has_collected_double_jump : bool = false #global lock for the double jump

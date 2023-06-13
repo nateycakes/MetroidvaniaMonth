@@ -26,6 +26,7 @@ func _ready() -> void:
 	Events.connect("player_died", self, "_on_player_died") #listen for global player_died signal from Events.gd
 	Events.connect("save_point_reached", self, "_on_save_point_reached")
 	PauseScreen.on_demand_pause(artifical_load_time)
+	player.double_jump = int(Events.has_collected_double_jump) #cast the bool to 0 or 1
 
 func room_setup():
 	determine_enter_location()
@@ -106,7 +107,12 @@ func _on_player_died():
 	respawnTimer.start(death_length)
 	Events.player_just_died = true
 	yield(respawnTimer, "timeout") #wait for the Respawntimer to finish
-	instance_new_player(player_spawn_location)
+	PlayerStats.set_health(PlayerStats.max_health) #reset health?
+	if Events.current_save_room != "":
+		
+		get_tree().change_scene(Events.current_save_room)
+	else:
+		get_tree().change_scene(Events.START_ROOM_PATH)
 
 func instance_new_player(location):
 	#handle creating a new player instance and setting its position within the scene
@@ -122,3 +128,4 @@ func _on_save_point_reached(newSavePointPosition, newSavePointFilepath):
 	Events.current_save_room = newSavePointFilepath
 	Events.save_point_position = newSavePointPosition
 	
+

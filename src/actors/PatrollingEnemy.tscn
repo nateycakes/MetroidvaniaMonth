@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/actors/Hitbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/actorAssets/enemy.png" type="Texture" id=2]
@@ -10,6 +10,30 @@ resource_local_to_scene = true
 _data = {
 "points": PoolVector2Array(  )
 }
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "IDLE",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 5.0
@@ -26,10 +50,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 5, 4 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -38,7 +62,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -59,10 +83,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 4, 5 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -127,6 +151,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 1.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("PathFollow2D/Enemy/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PathFollow2D/Enemy/Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [node name="PatrollingEnemy" type="Path2D"]
 curve = SubResource( 9 )
@@ -138,9 +186,17 @@ loop = false
 
 [node name="Enemy" type="Node2D" parent="PathFollow2D"]
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="PathFollow2D/Enemy"]
+frames = SubResource( 17 )
+animation = "IDLE"
+frame = 2
+playing = true
+
 [node name="Sprite" type="Sprite" parent="PathFollow2D/Enemy"]
 texture = ExtResource( 2 )
-hframes = 2
+hframes = 4
+vframes = 2
+frame = 5
 
 [node name="Hitbox" parent="PathFollow2D/Enemy" instance=ExtResource( 1 )]
 collision_mask = 32

@@ -19,7 +19,7 @@ const CAT_HURT : Resource = preload("res://assets/soundAssets/sfx/sfx_cat_hurt.w
 const CAT_JUMP : Resource = preload("res://assets/soundAssets/sfx/sfx_cat_jump.wav")
 const CAT_LAND : Resource = preload("res://assets/soundAssets/sfx/sfx_cat_land.wav")
 const CAT_MEOW : Resource = preload("res://assets/soundAssets/sfx/sfx_cat_meow.wav")
-
+const CAT_DEATH: Resource = preload("res://assets/soundAssets/sfx/sfx_cat_death.wav")
 
 ######  ENEMY SOUNDS  ##########
 const DRONE_DEACTIVATE : Resource = preload("res://assets/soundAssets/sfx/sfx_drone_deactivate.wav")

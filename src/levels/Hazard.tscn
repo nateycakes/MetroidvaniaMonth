@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/levelAssets/ElectricHazard.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/Hitbox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/levels/Hazard.gd" type="Script" id=3]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
@@ -24,10 +25,12 @@ resource_local_to_scene = true
 extents = Vector2( 8, 3 )
 
 [node name="Hazard" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -4 )
 frames = SubResource( 4 )
+frame = 1
 playing = true
 
 [node name="Hitbox" parent="." instance=ExtResource( 2 )]
@@ -37,3 +40,5 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 0, -2 )
 shape = SubResource( 1 )
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

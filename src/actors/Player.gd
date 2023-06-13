@@ -1,6 +1,17 @@
 extends KinematicBody2D
 class_name Player
 
+#note for spritesheet
+#Idle
+#Walk
+#Jump
+#Get Hit
+#Walk Attack
+#Idle Attack
+#Midair Attack
+#Death
+
+
 export(Resource) var moveData = preload("res://src/actors/DefaultPlayerMovementData.tres") as PlayerMovementData
 
 export(int, "OFF", "ON") var debug
@@ -9,7 +20,8 @@ enum states {
 	IDLE,
 	MOVE,
 	ATTACK,
-	KNOCKBACK
+	KNOCKBACK,
+	DEAD
 }
 
 onready var velocity : Vector2 = Vector2.ZERO
@@ -25,7 +37,7 @@ onready var playerStats = PlayerStats
 onready var hurtBox = $Hurtbox
 
 var state = states.MOVE
-var double_jump: int = 1
+var double_jump: int = 0
 var buffered_jump: bool = false
 var coyote_time_active: bool= false
 var is_exiting :bool = false #is the player leaving a room?
@@ -102,6 +114,8 @@ func _physics_process(delta: float) -> void:
 
 
 func determine_current_state(var input_vector, var currentState):
+	if state == states.DEAD:
+		return states.DEAD #BE DEAD
 	if Input.is_action_just_pressed("attack") and has_melee_ability and currentState != states.KNOCKBACK :
 		return states.ATTACK
 	if (currentState != states.ATTACK) and (currentState != states.KNOCKBACK): #if they're not attacking or in knockback
@@ -133,6 +147,11 @@ func run_state_machine(input_vector: Vector2, delta: float):
 			idle_state(input_vector, delta)
 		states.KNOCKBACK:
 			knockback_state(input_vector, delta)
+		states.DEAD:
+			dead_state()
+
+func dead_state():
+	animationState.travel("DEAD")
 
 func coyote_time_check():
 	#did the player just leave AND are they falling downward?
@@ -159,7 +178,6 @@ func move_state(input_vector, delta):
 
 func knockback_state(input_vector, delta):
 	velocity.x = 0
-
 
 func idle_state(input_vector, delta):
 	animationState.travel("IDLE")
@@ -209,6 +227,9 @@ func attack_state(input_vector, delta):
 	animationState.travel("ATTACK")
 	if debug:
 		print("I'm attacking")
+
+func attack_sfx():
+	SoundPlayer.play_sound(SoundPlayer.library.CAT_ATTACK)
 
 func get_player_input_direction() -> Vector2: #is player moving left or right? 
 	return Vector2(  
@@ -276,8 +297,11 @@ func additional_gravity(delta):
 func player_die():
 	if debug:
 		print("player dead")
+	state = states.DEAD
+	SoundPlayer.play_sound(SoundPlayer.library.CAT_DEATH)
+	animationState.travel("DEAD")
 	Events.emit_signal("player_died")
-	queue_free() #remove this instance of the player
+
 
 func take_damage():
 	#play our player damaged sound effect,

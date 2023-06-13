@@ -24,6 +24,7 @@ func _ready() -> void:
 
 func acquire_double_jump(player: Player):
 	player.moveData.DOUBLE_JUMP_COUNT = 1
+	Events.has_collected_double_jump = true
 
 func set_collectible_type(value):
 	collectible_type = value
@@ -58,7 +59,8 @@ func _on_Hurtbox_body_entered(body: Node) -> void:
 			COLLECTIBLE_TYPE.HEALTH:
 				sfx = SoundPlayer.library.PICKUP_HEALTH
 				emit_signal("collected", COLLECTIBLE_TYPE.HEALTH)
-				PlayerStats.restore_health(healthPowerupValue)
+				#don't let us send anything bigger than the max HP or the UI will look weird
+				PlayerStats.set_health(min(PlayerStats.health + 1, PlayerStats.max_health))
 			COLLECTIBLE_TYPE.LOGBOOK:
 				sfx = SoundPlayer.library.PICKUP_DISC
 				emit_signal("collected", COLLECTIBLE_TYPE.LOGBOOK)
