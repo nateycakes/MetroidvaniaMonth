@@ -33,4 +33,9 @@ transition_type = "ENTER_LEFT"
 position = Vector2( 0, -72 )
 collectible_type = 1
 
+[node name="PlayerSpawnZone2" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( 0, 32 )
+spawn_zone_type = 1
+transition_type = "DEFAULT_IN"
+
 [editable path="RoomExitZone"]

@@ -198,6 +198,7 @@ collectible_type = 3
 
 [node name="HighRise-L2" parent="." index="21" instance=ExtResource( 5 )]
 position = Vector2( 448, -816 )
+collectible_type = 3
 
 [node name="Heart1" parent="." index="22" instance=ExtResource( 5 )]
 position = Vector2( -112, -128 )
