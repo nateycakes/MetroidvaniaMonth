@@ -31,12 +31,12 @@ func _ready() -> void:
 func room_setup():
 	determine_enter_location()
 	Events.current_room_biome = biome #set the biome in the events appropriately
-	
+	set_room_background(biome)
 	if Events.previous_room_biome != biome:
 		#print("entering a new biome")
 		var newBGM = match_bgm_to_biome(biome)
 		MusicPlayer.crossfade_songs(newBGM)
-		set_room_background(biome)
+		
 		
 	player.position = player_spawn_location
 	#we are now finished setting up the current room which will be the next "previous room" when we transition

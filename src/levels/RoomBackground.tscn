@@ -7,18 +7,18 @@
 [node name="RoomBackground" type="ParallaxBackground"]
 script = ExtResource( 3 )
 
-[node name="ParallaxLayerBack" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.7, 0.8 )
-motion_mirroring = Vector2( 276, 240 )
-
-[node name="Sprite" type="Sprite" parent="ParallaxLayerBack"]
-texture = ExtResource( 2 )
-centered = false
-
 [node name="ParallaxLayerFront" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0.8, 0.9 )
-motion_mirroring = Vector2( 276, 240 )
+motion_scale = Vector2( 0.7, 0.9 )
+motion_mirroring = Vector2( 1104, 280 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxLayerFront"]
 texture = ExtResource( 1 )
+centered = false
+
+[node name="ParallaxLayerBack" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.65, 0.8 )
+motion_mirroring = Vector2( 1104, 280 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayerBack"]
+texture = ExtResource( 2 )
 centered = false
