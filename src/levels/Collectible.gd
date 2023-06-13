@@ -56,6 +56,7 @@ func _on_Hurtbox_body_entered(body: Node) -> void:
 				emit_signal("collected", COLLECTIBLE_TYPE.DOUBLEJUMP)
 				acquire_double_jump(body)
 				sfx = SoundPlayer.library.PICKUP_POWERUP
+				Events.emit_signal("jump_ability_collected")
 			COLLECTIBLE_TYPE.HEALTH:
 				sfx = SoundPlayer.library.PICKUP_HEALTH
 				emit_signal("collected", COLLECTIBLE_TYPE.HEALTH)
@@ -69,4 +70,5 @@ func _on_Hurtbox_body_entered(body: Node) -> void:
 				body.has_melee_ability = true #cheap way of doing it without game manager node
 				sfx = SoundPlayer.library.PICKUP_POWERUP
 				emit_signal("collected", COLLECTIBLE_TYPE.CLAWS)
+				Events.emit_signal("melee_ability_collected")
 		get_collected(sfx)

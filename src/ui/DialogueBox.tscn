@@ -1,11 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/uiAssets/ui_texture_rect_9_slice.png" type="Texture" id=1]
 [ext_resource path="res://assets/uiAssets/confirmButton.png" type="Texture" id=2]
-[ext_resource path="res://assets/uiAssets/fonts/Voice 7h.ttf" type="DynamicFontData" id=3]
-
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -107,7 +103,7 @@ margin_right = 112.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+text = "fdssdfsdf"
 align = 1
 valign = 1
 autowrap = true

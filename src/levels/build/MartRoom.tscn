@@ -128,7 +128,6 @@ collectible_type = 3
 
 [node name="PlayerSpawnZone2" parent="." index="20" instance=ExtResource( 3 )]
 position = Vector2( 120, -64 )
-spawn_zone_type = 1
 
 [editable path="Exit"]
 [editable path="Hazard"]

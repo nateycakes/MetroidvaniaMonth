@@ -2,6 +2,9 @@ extends Node
 
 signal player_died
 signal save_point_reached(room_position, room_path) # used by Room.tscn to determine if player walked into save point
+signal jump_ability_collected
+signal melee_ability_collected
+
 
 #enum for all diff regions a room could be. Doing this here bc it's basically our game manager
 enum biomes { 
