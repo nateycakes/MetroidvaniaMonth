@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/levels/Collectible.gd"
 }, {
+"base": "Control",
+"class": "DialogueBox",
+"language": "GDScript",
+"path": "res://src/ui/DialogueBox.gd"
+}, {
 "base": "Resource",
 "class": "MusicLibrary",
 "language": "GDScript",
@@ -46,6 +51,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Collectible": "",
+"DialogueBox": "",
 "MusicLibrary": "",
 "Player": "",
 "PlayerMovementData": "",
@@ -68,6 +74,7 @@ MusicPlayer="*res://src/sound/MusicPlayer.tscn"
 ScreenTransitions="*res://src/ui/ScreenTransitions.tscn"
 SoundPlayer="*res://src/sound/SoundPlayer.tscn"
 PauseScreen="*res://src/ui/PauseScreen.tscn"
+NotificationPopupWindow="*res://src/ui/NotificationPopupWindow.tscn"
 
 [display]
 

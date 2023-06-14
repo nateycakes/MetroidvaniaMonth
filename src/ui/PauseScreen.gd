@@ -28,11 +28,13 @@ func on_demand_pause(length):
 func pause_game():
 	get_tree().paused = true
 	Events.gamePaused = true
+	game_paused = true
 	screenDarkenRect.visible = true
 
 func unpause_game():
 	get_tree().paused = false
 	Events.gamePaused = false
+	game_paused = false
 	screenDarkenRect.visible = false
 
 func _on_pauseTimer_timeout() -> void:
