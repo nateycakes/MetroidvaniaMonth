@@ -27,6 +27,9 @@ func _ready() -> void:
 	Events.connect("save_point_reached", self, "_on_save_point_reached")
 	PauseScreen.on_demand_pause(artifical_load_time)
 	player.double_jump = int(Events.has_collected_double_jump) #cast the bool to 0 or 1
+	if Events.gameStart:
+		ScreenTransitions.play_transition("DEFAULT_IN")
+		Events.gameStart = false
 
 func room_setup():
 	determine_enter_location()

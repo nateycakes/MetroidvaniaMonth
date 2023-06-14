@@ -11,7 +11,7 @@ enum states {
 
 const TEXT_DISPLAY_SPEED = 0.05
 
-onready var textArea : Label = $BodyBackground/MarginContainer/textArea
+onready var textArea : RichTextLabel = $BodyBackground/MarginContainer/textArea
 #onready var dialogueContainer : CenterContainer = $DialogueBoxContainer
 onready var textTween : Tween = $Tween
 onready var confirmIcon : TextureButton = $BodyBackground/TextureButton

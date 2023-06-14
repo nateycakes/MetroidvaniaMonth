@@ -35,16 +35,14 @@ margin_top = 8.0
 margin_right = -8.0
 margin_bottom = -16.0
 
-[node name="textArea" type="Label" parent="BodyBackground/MarginContainer"]
+[node name="textArea" type="RichTextLabel" parent="BodyBackground/MarginContainer"]
 margin_right = 240.0
 margin_bottom = 168.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "fdssdfsdf"
-align = 1
-valign = 1
-autowrap = true
+visible_characters = 0
 percent_visible = 0.0
+text = "fdssdfsdf"
 
 [node name="TextureButton" type="TextureButton" parent="BodyBackground"]
 visible = false

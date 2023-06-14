@@ -15,6 +15,9 @@ enum biomes {
 	UNDERGROUND
 }
 
+var lorebook_entries = []
+
+
 const START_ROOM_PATH = "res://src/levels/build/StartRoom.tscn"
 
 var current_room_biome = null
