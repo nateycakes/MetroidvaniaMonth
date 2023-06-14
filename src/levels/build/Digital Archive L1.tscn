@@ -602,7 +602,7 @@ position = Vector2( 120, -152 )
 
 [node name="RoomExitZone" parent="." index="48" instance=ExtResource( 5 )]
 position = Vector2( -200, -184 )
-target_room_path = "res://src/levels/build/Underground Right.tscn"
+target_room_path = "res://src/levels/build/Underground Checkpoint.tscn"
 transition_type = "EXIT_LEFT"
 
 [node name="CollisionShape2D" parent="RoomExitZone" index="0"]
@@ -611,7 +611,7 @@ shape = SubResource( 35 )
 
 [node name="PlayerSpawnZone" parent="." index="49" instance=ExtResource( 6 )]
 position = Vector2( -144, -176 )
-from_room_scene = "res://src/levels/build/Underground Right.tscn"
+from_room_scene = "res://src/levels/build/Underground Checkpoint.tscn"
 transition_type = "ENTER_LEFT"
 
 [node name="Door_LARGE4" parent="." index="50" instance=ExtResource( 1 )]

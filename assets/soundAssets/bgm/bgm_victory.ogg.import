@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/bgm_victory.ogg-ebf5e7198ffcdbd876b3468e35e60e27.oggstr"
+
+[deps]
+
+source_file="res://assets/soundAssets/bgm/bgm_victory.ogg"
+dest_files=[ "res://.import/bgm_victory.ogg-ebf5e7198ffcdbd876b3468e35e60e27.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=76.8

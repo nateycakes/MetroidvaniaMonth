@@ -37,3 +37,6 @@ var previous_room_path : String = "" #path to the resource of the previous room
 
 var has_collected_claws : bool = false  #variable to track if the player collected melee indepentent of scenes
 var has_collected_double_jump : bool = false #global lock for the double jump
+
+func add_lorebook_entry(lorebookID):
+	lorebook_entries.push_front()

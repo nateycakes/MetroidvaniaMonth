@@ -12,4 +12,4 @@ dest_files=[ "res://.import/bgm_underground.ogg-220f42216257eb07b7e2d0b4356895e5
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=134.4

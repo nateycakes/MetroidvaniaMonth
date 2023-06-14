@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/levels/RoomExitZone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/levels/PlayerSpawnZone.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://src/levels/Door_LARGE.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 8, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
 resource_local_to_scene = true
 extents = Vector2( 8, 32 )
 
@@ -27,6 +31,8 @@ transition_type = "ENTER_LEFT"
 
 [node name="PlayerSpawnZone3" parent="." index="8" instance=ExtResource( 2 )]
 position = Vector2( 136, 64 )
+from_room_scene = "res://src/levels/build/Digital Archive L1.tscn"
+transition_type = "ENTER_RIGHT"
 
 [node name="RoomExitZone" parent="." index="9" instance=ExtResource( 1 )]
 position = Vector2( -184, 56 )
@@ -39,6 +45,12 @@ shape = SubResource( 1 )
 
 [node name="RoomExitZone2" parent="." index="10" instance=ExtResource( 1 )]
 position = Vector2( 184, 56 )
+target_room_path = "res://src/levels/build/Digital Archive L1.tscn"
+transition_type = "EXIT_RIGHT"
+
+[node name="CollisionShape2D" parent="RoomExitZone2" index="0"]
+position = Vector2( 0, -24 )
+shape = SubResource( 2 )
 
 [node name="Door_LARGE" parent="." index="11" instance=ExtResource( 4 )]
 position = Vector2( -168, 32 )
@@ -47,3 +59,4 @@ position = Vector2( -168, 32 )
 position = Vector2( 168, 32 )
 
 [editable path="RoomExitZone"]
+[editable path="RoomExitZone2"]

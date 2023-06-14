@@ -14,6 +14,7 @@ enum COLLECTIBLE_TYPE {
 }
 
 export(COLLECTIBLE_TYPE) var collectible_type = COLLECTIBLE_TYPE.DOUBLEJUMP setget set_collectible_type
+export(int) var lore_id = 0
 onready var animatedSprite = $AnimatedSprite
 
 var healthPowerupValue = 1

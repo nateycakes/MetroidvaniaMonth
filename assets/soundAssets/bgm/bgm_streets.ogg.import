@@ -12,4 +12,4 @@ dest_files=[ "res://.import/bgm_streets.ogg-9bf3e84b2f98b9f155a6466d9e4f9912.ogg
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=144.0

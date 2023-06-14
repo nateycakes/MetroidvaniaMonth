@@ -12,4 +12,4 @@ dest_files=[ "res://.import/bgm_checkpoint.ogg-6154d05835484d9cac00f8c139dcd6b7.
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=48.0

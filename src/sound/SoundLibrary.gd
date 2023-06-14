@@ -23,7 +23,7 @@ const CAT_DEATH: Resource = preload("res://assets/soundAssets/sfx/sfx_cat_death.
 
 ######  ENEMY SOUNDS  ##########
 const DRONE_DEACTIVATE : Resource = preload("res://assets/soundAssets/sfx/sfx_drone_deactivate.wav")
-
+const DRONE_REACTIVATE : Resource = preload("res://assets/soundAssets/sfx/sfx_drone_reactivate.wav")
 
 ######  HAZARD SOUNDS  ##########
 const FLOOR_DAMAGE : Resource = preload("res://assets/soundAssets/sfx/sfx_floor_damage.wav")
@@ -45,7 +45,8 @@ const PICKUP_DISC : Resource = preload("res://assets/soundAssets/sfx/sfx_pickup_
 const PICKUP_HEALTH : Resource = preload("res://assets/soundAssets/sfx/sfx_pickup_health.wav")
 const PICKUP_POWERUP : Resource = preload("res://assets/soundAssets/sfx/sfx_pickup_powerup.wav")
 
-
-
-
+#####  UI SOUNDS   ############
+const UI_CANCEL : Resource = preload("res://assets/soundAssets/sfx/sfx_ui_cancel.wav")
+const UI_CONFIRM : Resource = preload("res://assets/soundAssets/sfx/sfx_ui_confirm.wav")
+const UI_MOVE : Resource = preload("res://assets/soundAssets/sfx/sfx_ui_move.wav")
 

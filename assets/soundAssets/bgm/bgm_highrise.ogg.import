@@ -12,4 +12,4 @@ dest_files=[ "res://.import/bgm_highrise.ogg-8996988ebfec0bb60936bd46cd4c4f84.og
 [params]
 
 loop=true
-loop_offset=0
+loop_offset=150.418
