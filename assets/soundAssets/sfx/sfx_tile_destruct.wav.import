@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_tile_destruct.wav-bb3c53c39c71c0f31f3f32fd0b8cae5b.sample"
+
+[deps]
+
+source_file="res://assets/soundAssets/sfx/sfx_tile_destruct.wav"
+dest_files=[ "res://.import/sfx_tile_destruct.wav-bb3c53c39c71c0f31f3f32fd0b8cae5b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

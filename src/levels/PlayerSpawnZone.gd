@@ -44,6 +44,7 @@ func _on_PlayerSpawnZone_body_entered(body: Node) -> void:
 		#emit the save point reached so Events will remember WHICH save room this is
 		var new_save_point_path : String = get_parent().filename
 		checkpointSprite.play("activated")
+		SoundPlayer.play_sound(SoundPlayer.library.CHECKPOINT_ACTIVATE)
 		PlayerStats.set_health(PlayerStats.max_health)
 		Events.emit_signal("save_point_reached", position, new_save_point_path)
 		

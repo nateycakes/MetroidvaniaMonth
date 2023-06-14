@@ -51,6 +51,7 @@ extents = Vector2( 12, 32 )
 extents = Vector2( 8, 32 )
 
 [node name="Door_LARGE" instance=ExtResource( 1 )]
+door_type = 1
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 3 )

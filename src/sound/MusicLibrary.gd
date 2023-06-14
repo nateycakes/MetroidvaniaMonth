@@ -17,3 +17,6 @@ const CHECKPOINT : Resource = preload("res://assets/soundAssets/bgm/bgm_checkpoi
 const HIGHRISE: Resource = preload("res://assets/soundAssets/bgm/bgm_highrise.ogg")
 const STREETS: Resource = preload("res://assets/soundAssets/bgm/bgm_streets.ogg")
 const UNDERGROUND: Resource = preload("res://assets/soundAssets/bgm/bgm_underground.ogg")
+const TITLE_SCREEN: Resource = preload("res://assets/soundAssets/bgm/bgm_titlescreen.ogg")
+const VICTORY_SCREEN: Resource = preload("res://assets/soundAssets/bgm/bgm_victoryscreen.ogg")
+

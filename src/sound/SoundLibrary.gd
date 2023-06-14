@@ -29,9 +29,15 @@ const DRONE_DEACTIVATE : Resource = preload("res://assets/soundAssets/sfx/sfx_dr
 const FLOOR_DAMAGE : Resource = preload("res://assets/soundAssets/sfx/sfx_floor_damage.wav")
 
 
+###### CHECKPOINT SOUNDS #######
+const CHECKPOINT_ACTIVATE : Resource = preload("res://assets/soundAssets/sfx/sfx_checkpoint_activate.wav")
+const CHECKPOINT_RELOAD : Resource = preload("res://assets/soundAssets/sfx/sfx_checkpoint_reload.wav")
+const CHECKPOINT_FINAL : Resource = preload("res://assets/soundAssets/sfx/sfx_final_activate.wav")
+
+
 ######  DOOR SOUNDS  ###########
-const DOOR_OPEN_LARGE: Resource = preload("res://assets/soundAssets/sfx/sfx_door_open_1.wav")
-const DOOR_OPEN_SMALL: Resource = preload("res://assets/soundAssets/sfx/sfx_tile_destruct_1.wav")
+const DOOR_OPEN_LARGE: Resource = preload("res://assets/soundAssets/sfx/sfx_door_open.wav")
+const DOOR_OPEN_SMALL: Resource = preload("res://assets/soundAssets/sfx/sfx_tile_destruct.wav")
 
 
 #####  COLLECTIBLE SOUNDS  #######
