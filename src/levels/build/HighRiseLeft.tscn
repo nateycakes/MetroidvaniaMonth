@@ -195,10 +195,12 @@ animation_type = 1
 [node name="HighRise-L1" parent="." index="20" instance=ExtResource( 5 )]
 position = Vector2( -104, -472 )
 collectible_type = 3
+lore_id = 5
 
 [node name="HighRise-L2" parent="." index="21" instance=ExtResource( 5 )]
 position = Vector2( 448, -816 )
 collectible_type = 3
+lore_id = 17
 
 [node name="Heart1" parent="." index="22" instance=ExtResource( 5 )]
 position = Vector2( -112, -128 )

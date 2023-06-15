@@ -149,10 +149,12 @@ position = Vector2( -488, 120 )
 [node name="City-L1" parent="." index="19" instance=ExtResource( 6 )]
 position = Vector2( -448, 112 )
 collectible_type = 3
+lore_id = 10
 
 [node name="City-L2" parent="." index="20" instance=ExtResource( 6 )]
 position = Vector2( 128, -96 )
 collectible_type = 3
+lore_id = 2
 
 [node name="Health1" parent="." index="21" instance=ExtResource( 6 )]
 position = Vector2( -760, 280 )

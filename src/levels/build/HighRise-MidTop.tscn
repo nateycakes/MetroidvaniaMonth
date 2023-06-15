@@ -132,6 +132,7 @@ collectible_type = 2
 [node name="HighRiseMT-L1" parent="." index="12" instance=ExtResource( 4 )]
 position = Vector2( 16, -320 )
 collectible_type = 3
+lore_id = 6
 
 [node name="HighRiseMT-L2" parent="." index="13" instance=ExtResource( 4 )]
 position = Vector2( 416, -336 )

@@ -106,14 +106,17 @@ tile_data = PoolIntArray( -3866644, 4, 1, -3866643, 4, 65536, -3866642, 4, 65536
 [node name="HighRiseR-L1" parent="." index="4" instance=ExtResource( 2 )]
 position = Vector2( 104, 24 )
 collectible_type = 3
+lore_id = 1
 
 [node name="HighRiseR-L2" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( -48, -816 )
 collectible_type = 3
+lore_id = 6
 
 [node name="HighRiseR-L3" parent="." index="6" instance=ExtResource( 2 )]
 position = Vector2( 304, -816 )
 collectible_type = 3
+lore_id = 12
 
 [node name="Door_SMALL2" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( -72, -760 )

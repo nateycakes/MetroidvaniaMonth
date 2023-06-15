@@ -182,9 +182,6 @@ position = Vector2( 280, -176 )
 position = Vector2( 240, -248 )
 rotation = -1.5708
 
-[node name="AnimatedSprite" parent="Hazard5" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard5/Hitbox" index="0"]
 position = Vector2( -7.99998, -5 )
 shape = SubResource( 3 )
@@ -193,18 +190,12 @@ shape = SubResource( 3 )
 position = Vector2( 240, -232 )
 rotation = -1.5708
 
-[node name="AnimatedSprite" parent="Hazard5a" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard5a/Hitbox" index="0"]
 shape = SubResource( 4 )
 disabled = true
 
 [node name="Hazard6" parent="." index="13" instance=ExtResource( 4 )]
 position = Vector2( 408, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6/Hitbox" index="0"]
 position = Vector2( 120, -5 )
@@ -213,18 +204,12 @@ shape = SubResource( 5 )
 [node name="Hazard6a" parent="." index="14" instance=ExtResource( 4 )]
 position = Vector2( 424, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6a" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6a/Hitbox" index="0"]
 shape = SubResource( 6 )
 disabled = true
 
 [node name="Hazard6b" parent="." index="15" instance=ExtResource( 4 )]
 position = Vector2( 440, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6b" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6b/Hitbox" index="0"]
 shape = SubResource( 7 )
@@ -233,18 +218,12 @@ disabled = true
 [node name="Hazard6c" parent="." index="16" instance=ExtResource( 4 )]
 position = Vector2( 456, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6c" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6c/Hitbox" index="0"]
 shape = SubResource( 8 )
 disabled = true
 
 [node name="Hazard6d" parent="." index="17" instance=ExtResource( 4 )]
 position = Vector2( 472, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6d" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6d/Hitbox" index="0"]
 shape = SubResource( 9 )
@@ -253,18 +232,12 @@ disabled = true
 [node name="Hazard6e" parent="." index="18" instance=ExtResource( 4 )]
 position = Vector2( 488, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6e" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6e/Hitbox" index="0"]
 shape = SubResource( 10 )
 disabled = true
 
 [node name="Hazard6f" parent="." index="19" instance=ExtResource( 4 )]
 position = Vector2( 504, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6f" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6f/Hitbox" index="0"]
 shape = SubResource( 11 )
@@ -273,18 +246,12 @@ disabled = true
 [node name="Hazard6g" parent="." index="20" instance=ExtResource( 4 )]
 position = Vector2( 520, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6g" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6g/Hitbox" index="0"]
 shape = SubResource( 12 )
 disabled = true
 
 [node name="Hazard6h" parent="." index="21" instance=ExtResource( 4 )]
 position = Vector2( 536, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6h" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6h/Hitbox" index="0"]
 shape = SubResource( 13 )
@@ -293,18 +260,12 @@ disabled = true
 [node name="Hazard6i" parent="." index="22" instance=ExtResource( 4 )]
 position = Vector2( 552, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6i" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6i/Hitbox" index="0"]
 shape = SubResource( 14 )
 disabled = true
 
 [node name="Hazard6j" parent="." index="23" instance=ExtResource( 4 )]
 position = Vector2( 568, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6j" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6j/Hitbox" index="0"]
 shape = SubResource( 15 )
@@ -313,18 +274,12 @@ disabled = true
 [node name="Hazard6k" parent="." index="24" instance=ExtResource( 4 )]
 position = Vector2( 584, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6k" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6k/Hitbox" index="0"]
 shape = SubResource( 16 )
 disabled = true
 
 [node name="Hazard6l" parent="." index="25" instance=ExtResource( 4 )]
 position = Vector2( 600, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6l" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6l/Hitbox" index="0"]
 shape = SubResource( 17 )
@@ -333,18 +288,12 @@ disabled = true
 [node name="Hazard6m" parent="." index="26" instance=ExtResource( 4 )]
 position = Vector2( 616, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6m" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6m/Hitbox" index="0"]
 shape = SubResource( 18 )
 disabled = true
 
 [node name="Hazard6n" parent="." index="27" instance=ExtResource( 4 )]
 position = Vector2( 632, -176 )
-
-[node name="AnimatedSprite" parent="Hazard6n" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard6n/Hitbox" index="0"]
 shape = SubResource( 19 )
@@ -353,18 +302,12 @@ disabled = true
 [node name="Hazard6o" parent="." index="28" instance=ExtResource( 4 )]
 position = Vector2( 648, -176 )
 
-[node name="AnimatedSprite" parent="Hazard6o" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard6o/Hitbox" index="0"]
 shape = SubResource( 20 )
 disabled = true
 
 [node name="Hazard7" parent="." index="29" instance=ExtResource( 4 )]
 position = Vector2( 216, 64 )
-
-[node name="AnimatedSprite" parent="Hazard7" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard7/Hitbox" index="0"]
 position = Vector2( 40, -5 )
@@ -373,18 +316,12 @@ shape = SubResource( 21 )
 [node name="Hazard7a" parent="." index="30" instance=ExtResource( 4 )]
 position = Vector2( 232, 64 )
 
-[node name="AnimatedSprite" parent="Hazard7a" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard7a/Hitbox" index="0"]
 shape = SubResource( 22 )
 disabled = true
 
 [node name="Hazard7b" parent="." index="31" instance=ExtResource( 4 )]
 position = Vector2( 248, 64 )
-
-[node name="AnimatedSprite" parent="Hazard7b" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard7b/Hitbox" index="0"]
 shape = SubResource( 23 )
@@ -393,18 +330,12 @@ disabled = true
 [node name="Hazard7c" parent="." index="32" instance=ExtResource( 4 )]
 position = Vector2( 264, 64 )
 
-[node name="AnimatedSprite" parent="Hazard7c" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard7c/Hitbox" index="0"]
 shape = SubResource( 24 )
 disabled = true
 
 [node name="Hazard7d" parent="." index="33" instance=ExtResource( 4 )]
 position = Vector2( 280, 64 )
-
-[node name="AnimatedSprite" parent="Hazard7d" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard7d/Hitbox" index="0"]
 shape = SubResource( 25 )
@@ -413,18 +344,12 @@ disabled = true
 [node name="Hazard7e" parent="." index="34" instance=ExtResource( 4 )]
 position = Vector2( 296, 64 )
 
-[node name="AnimatedSprite" parent="Hazard7e" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard7e/Hitbox" index="0"]
 shape = SubResource( 26 )
 disabled = true
 
 [node name="Hazard8" parent="." index="35" instance=ExtResource( 4 )]
 position = Vector2( 344, 64 )
-
-[node name="AnimatedSprite" parent="Hazard8" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard8/Hitbox" index="0"]
 position = Vector2( 32, -5 )
@@ -433,18 +358,12 @@ shape = SubResource( 27 )
 [node name="Hazard8a" parent="." index="36" instance=ExtResource( 4 )]
 position = Vector2( 360, 64 )
 
-[node name="AnimatedSprite" parent="Hazard8a" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard8a/Hitbox" index="0"]
 shape = SubResource( 28 )
 disabled = true
 
 [node name="Hazard8b" parent="." index="37" instance=ExtResource( 4 )]
 position = Vector2( 376, 64 )
-
-[node name="AnimatedSprite" parent="Hazard8b" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard8b/Hitbox" index="0"]
 shape = SubResource( 29 )
@@ -453,18 +372,12 @@ disabled = true
 [node name="Hazard8c" parent="." index="38" instance=ExtResource( 4 )]
 position = Vector2( 392, 64 )
 
-[node name="AnimatedSprite" parent="Hazard8c" index="0"]
-frame = 0
-
 [node name="CollisionShape2D" parent="Hazard8c/Hitbox" index="0"]
 shape = SubResource( 30 )
 disabled = true
 
 [node name="Hazard8d" parent="." index="39" instance=ExtResource( 4 )]
 position = Vector2( 408, 64 )
-
-[node name="AnimatedSprite" parent="Hazard8d" index="0"]
-frame = 0
 
 [node name="CollisionShape2D" parent="Hazard8d/Hitbox" index="0"]
 shape = SubResource( 31 )
@@ -501,6 +414,7 @@ collectible_type = 2
 [node name="Heart3" parent="." index="46" instance=ExtResource( 5 )]
 position = Vector2( 216, -568 )
 collectible_type = 2
+lore_id = 4
 
 [node name="Door_LARGE" parent="." index="47" instance=ExtResource( 7 )]
 position = Vector2( 808, -208 )
@@ -512,6 +426,7 @@ collectible_type = 3
 [node name="UnderL-L2" parent="." index="49" instance=ExtResource( 5 )]
 position = Vector2( 208, -344 )
 collectible_type = 3
+lore_id = 13
 
 [node name="UnderL-L3" parent="." index="50" instance=ExtResource( 5 )]
 position = Vector2( 760, -424 )

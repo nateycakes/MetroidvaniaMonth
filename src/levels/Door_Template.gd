@@ -30,7 +30,7 @@ func _ready() -> void:
 
 #only player is masking to this layer, so no need to test if its the player
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
-	hurtboxCollisionShape.set_deferred("Disabled", true)
+	hurtboxCollisionShape.set_deferred("disabled", true)
 	#physicsCollisionShape.disabled = true
 	animatedSprite.play("OPEN")
 	state = doorStates.OPEN

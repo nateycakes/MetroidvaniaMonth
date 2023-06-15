@@ -36,10 +36,12 @@ shape = SubResource( 1 )
 [node name="CityR-L1" parent="." index="5" instance=ExtResource( 5 )]
 position = Vector2( 520, -168 )
 collectible_type = 3
+lore_id = 11
 
 [node name="CityR-L2" parent="." index="6" instance=ExtResource( 5 )]
 position = Vector2( 744, -128 )
 collectible_type = 3
+lore_id = 8
 
 [node name="Door_SMALL" parent="." index="7" instance=ExtResource( 3 )]
 position = Vector2( 744, 56 )

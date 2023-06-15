@@ -466,10 +466,12 @@ collectible_type = 2
 [node name="UndergroundR-L1" parent="." index="48" instance=ExtResource( 4 )]
 position = Vector2( -112, -320 )
 collectible_type = 3
+lore_id = 18
 
 [node name="UndergroundR-L2" parent="." index="49" instance=ExtResource( 4 )]
 position = Vector2( 432, -320 )
 collectible_type = 3
+lore_id = 9
 
 [node name="RoomExitZone" parent="." index="50" instance=ExtResource( 5 )]
 position = Vector2( -200, -184 )

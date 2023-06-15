@@ -186,10 +186,12 @@ transition_type = "ENTER_RIGHT"
 [node name="UnderFL-L1" parent="." index="20" instance=ExtResource( 5 )]
 position = Vector2( -24, -16 )
 collectible_type = 3
+lore_id = 3
 
 [node name="UnderFL-L2" parent="." index="21" instance=ExtResource( 5 )]
 position = Vector2( 64, -336 )
 collectible_type = 3
+lore_id = 15
 
 [node name="Heart1" parent="." index="22" instance=ExtResource( 5 )]
 position = Vector2( -128, -240 )

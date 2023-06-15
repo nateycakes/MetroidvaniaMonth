@@ -142,10 +142,12 @@ position = Vector2( 24, -160 )
 [node name="UndergroundC-L1" parent="." index="10" instance=ExtResource( 4 )]
 position = Vector2( 432, -264 )
 collectible_type = 3
+lore_id = 7
 
 [node name="UndergroundC-L2" parent="." index="11" instance=ExtResource( 4 )]
 position = Vector2( -128, -280 )
 collectible_type = 3
+lore_id = 16
 
 [node name="Heart1" parent="." index="12" instance=ExtResource( 4 )]
 position = Vector2( 432, -328 )

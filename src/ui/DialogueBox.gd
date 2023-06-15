@@ -83,6 +83,9 @@ func _on_Tween_tween_all_completed() -> void:
 	confirmIcon.show()
 	change_state(states.FINISHED)
 
+
+
+
 func change_state(next_state):
 	current_state = next_state
 #	match current_state:
@@ -94,7 +97,6 @@ func change_state(next_state):
 #			print("Changing to Finished state")
 
 
-
-
-
-
+func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+	confirmIcon.show()
+	change_state(states.FINISHED)
