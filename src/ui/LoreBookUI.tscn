@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/ui/DialogueBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ui/LoreBookUI.gd" type="Script" id=2]
+[ext_resource path="res://src/ui/LoreUIButton.tscn" type="PackedScene" id=3]
 
 [node name="LoreBook" type="CanvasLayer"]
 pause_mode = 2
@@ -36,24 +37,12 @@ size_flags_horizontal = 3
 
 [node name="LoreEntryList" type="VBoxContainer" parent="Control/MarginContainer/SplitScreenContainer/ScrollContainer"]
 margin_right = 106.0
-margin_bottom = 74.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.5
 
-[node name="SpacerButton" type="Button" parent="Control/MarginContainer/SplitScreenContainer/ScrollContainer/LoreEntryList"]
-margin_right = 106.0
-margin_bottom = 22.0
-
-[node name="SpacerButton2" type="Button" parent="Control/MarginContainer/SplitScreenContainer/ScrollContainer/LoreEntryList"]
-margin_top = 26.0
-margin_right = 106.0
-margin_bottom = 48.0
-
-[node name="SpacerButton3" type="Button" parent="Control/MarginContainer/SplitScreenContainer/ScrollContainer/LoreEntryList"]
-margin_top = 52.0
-margin_right = 106.0
-margin_bottom = 74.0
+[node name="LoreUIButton" parent="Control/MarginContainer/SplitScreenContainer/ScrollContainer/LoreEntryList" instance=ExtResource( 3 )]
 
 [node name="DialogueBox" parent="Control/MarginContainer/SplitScreenContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
