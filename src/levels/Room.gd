@@ -35,6 +35,8 @@ func room_setup():
 	determine_enter_location()
 	Events.current_room_biome = biome #set the biome in the events appropriately
 	set_room_background(biome)
+	prune_already_collected_logbooks()
+	prune_already_collected_abilities()
 	if Events.previous_room_biome != biome:
 		#print("entering a new biome")
 		var newBGM = match_bgm_to_biome(biome)
@@ -62,6 +64,33 @@ func match_background_to_biome(biomeType):
 			return [ roomBackgroundLibrary.UNDERGROUND_LAYER_BACK, roomBackgroundLibrary.UNDERGROUND_LAYER_FRONT ]
 	#default value in case something isn't set correctly
 	#return MusicPlayer.library.STREETS
+
+func prune_already_collected_logbooks():
+	#get a list of all collectibles, iterate through them, and if they're a logbook type
+	# AND their lore_id was already added to the global Events list, prune it
+	var room_collectibles : Array = get_tree().get_nodes_in_group("Collectibles")
+	for collectible in room_collectibles:
+		#cast a variable as type collectible so I can autocomplete and Godot knows wtf this will be
+		var comparable_collectible_object : Collectible = collectible
+		#search the global events lorebook collection to see if the current lore_id is store in there
+		#returns -1 if it's not in there
+		var search_result = Events.lorebook_entries.find(comparable_collectible_object.lore_id)
+		if search_result != -1 and comparable_collectible_object.collectible_type == Collectible.COLLECTIBLE_TYPE.LOGBOOK: 
+			#if we find a match and it's a logbook collectible, prune it
+			collectible.queue_free()
+
+func prune_already_collected_abilities():
+	#get a list of all collectibles, iterate through them, and if they're melee or jump AND
+	#if the global Events.has_collected vars are true, prune them
+	var room_collectibles : Array = get_tree().get_nodes_in_group("Collectibles")
+	for collectible in room_collectibles:
+		#cast a variable as type collectible so I can autocomplete and Godot knows wtf this will be
+		var comparable_collectible_object : Collectible = collectible
+		if Events.has_collected_claws and (comparable_collectible_object.collectible_type == Collectible.COLLECTIBLE_TYPE.CLAWS):
+			collectible.queue_free()
+		if Events.has_collected_double_jump and (comparable_collectible_object.collectible_type == Collectible.COLLECTIBLE_TYPE.DOUBLEJUMP):
+			collectible.queue_free()
+
 
 func set_room_background(biomeType):
 	var biomeBG = [ "", "" ]

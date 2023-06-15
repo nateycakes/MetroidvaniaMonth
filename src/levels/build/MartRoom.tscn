@@ -113,6 +113,7 @@ collectible_type = 2
 [node name="Collectible4" parent="." index="19" instance=ExtResource( 8 )]
 position = Vector2( 24, -80 )
 collectible_type = 3
+lore_id = 10
 
 [node name="PlayerSpawnZone2" parent="." index="20" instance=ExtResource( 3 )]
 position = Vector2( 120, -64 )

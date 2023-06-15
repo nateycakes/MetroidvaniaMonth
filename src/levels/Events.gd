@@ -15,7 +15,7 @@ enum biomes {
 	UNDERGROUND
 }
 
-var lorebook_entries = []
+var lorebook_entries : Array = []
 
 
 const START_ROOM_PATH = "res://src/levels/build/StartRoom.tscn"
@@ -39,4 +39,4 @@ var has_collected_claws : bool = false  #variable to track if the player collect
 var has_collected_double_jump : bool = false #global lock for the double jump
 
 func add_lorebook_entry(lorebookID):
-	lorebook_entries.push_front()
+	lorebook_entries.push_front(lorebookID)

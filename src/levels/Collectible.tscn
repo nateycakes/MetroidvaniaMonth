@@ -157,13 +157,13 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7.07107, 7.07107 )
 
-[node name="Collectible" type="Node2D"]
+[node name="Collectible" type="Node2D" groups=["Collectibles"]]
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 34 )
 animation = "logbook"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Hurtbox" parent="." instance=ExtResource( 2 )]

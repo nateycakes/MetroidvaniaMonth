@@ -65,6 +65,7 @@ func _on_Hurtbox_body_entered(body: Node) -> void:
 				PlayerStats.set_health(min(PlayerStats.health + 1, PlayerStats.max_health))
 			COLLECTIBLE_TYPE.LOGBOOK:
 				sfx = SoundPlayer.library.PICKUP_DISC
+				Events.add_lorebook_entry(lore_id)
 				emit_signal("collected", COLLECTIBLE_TYPE.LOGBOOK)
 			COLLECTIBLE_TYPE.CLAWS:
 				Events.has_collected_claws = true
